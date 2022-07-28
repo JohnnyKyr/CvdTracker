@@ -64,7 +64,7 @@ if(!$GLOBALS["connect"]){
 
 
 
-	$jsondata = file_get_contents("generic.json");
+	$jsondata = file_get_contents("..\generic.json");
 	$json = json_decode($jsondata,true);
 
 	foreach ($json as $ele) {
