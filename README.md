@@ -1,2 +1,2 @@
 # CvdTracker
-Web dev University project
+Web development university project
