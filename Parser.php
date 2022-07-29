@@ -1,8 +1,5 @@
 <?php 
 
-//TO DO:
-// Find a way to add arrays into the db;
-
 
 $server = "localhost";
 $user = "root";
@@ -14,6 +11,8 @@ $GLOBALS['connect'] =  mysqli_connect($server, $user, $ps, $database);
 if(!$GLOBALS["connect"]){
     die("Error: Cannot connect to database" . mysqli_coonect_errno());
 	}
+
+//Clear data from tables;
  mysqli_query($GLOBALS['connect'] ,"delete from poi;");
  mysqli_query($GLOBALS['connect'] ,"delete from coords;");
  mysqli_query($GLOBALS['connect'] ,"delete from popularity;");
@@ -22,19 +21,12 @@ if(!$GLOBALS["connect"]){
 
 
 
-	function insertPoi($id,$name,$address,$types,$coords,$rating,$rating_n){
-	
-
-		$prep = array();
-		foreach($types as $k=>$v){
-			$prep[':'.$k] = $v;
-		}
-		$prep = array();
+	function insertPoi($id,$name,$types,$address,$rating,$rating_n){
+		
+		$res = json_encode($types);
 		
 
-
-
-		$query = "INSERT INTO poi(id,name,address,types,coordinates,rating,rating_n) VALUES('$id','$name','$address',NULL,Null,'$rating','$rating_n')";
+		$query = "INSERT INTO poi(id,name,types,address,rating,rating_n) VALUES('$id','$name','$res','$address','$rating','$rating_n')";
 
 		$res = mysqli_query($GLOBALS['connect'] ,$query);
 
@@ -53,7 +45,8 @@ if(!$GLOBALS["connect"]){
 	}
 
 	function popularity($poiID,$day,$data){
-		$query = "INSERT INTO popularity(poiID,day,data) VALUES('$poiID','$day',NULL)";
+		$res = json_encode($data);
+		$query = "INSERT INTO popularity(popID,day,data) VALUES('$poiID','$day','$res')";
 		$res = mysqli_query($GLOBALS['connect'] ,$query);
 
 		if(!$res){
@@ -64,11 +57,11 @@ if(!$GLOBALS["connect"]){
 
 
 
-	$jsondata = file_get_contents("..\generic.json");
+	$jsondata = file_get_contents("../generic.json");
 	$json = json_decode($jsondata,true);
 
 	foreach ($json as $ele) {
-		insertPoi($ele["id"],$ele["name"],$ele["address"],$ele["types"],$ele["coordinates"],$ele["rating"],$ele["rating_n"]);
+		insertPoi($ele["id"],$ele["name"],$ele["types"],$ele["address"],$ele["rating"],$ele["rating_n"]);
 		insertCoords($ele["id"], $ele["coordinates"]["lat"], $ele["coordinates"]["lng"]);
 		foreach ($ele["populartimes"] as $day) {
 			popularity($ele["id"],$day["name"],$day["data"]);
