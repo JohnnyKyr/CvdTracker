@@ -93,7 +93,6 @@ function createUser($connect, $username, $password, $email){
     
 }
 
-// TODO το query για τον κωδικό και το username
 function doNotMatch($connect,$username, $password){
     $select = mysqli_query($connect, "SELECT password FROM user WHERE username = '$username'");
     if(mysqli_num_rows($select) ){
