@@ -92,7 +92,7 @@ function createUser($connect, $username, $password, $email){
     exit();
     
 }
-
+//kanw ena sxolio==
 function doNotMatch($connect,$username, $password){
     $select = mysqli_query($connect, "SELECT password FROM user WHERE username = '$username'");
     if(mysqli_num_rows($select) ){
