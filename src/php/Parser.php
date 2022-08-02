@@ -50,7 +50,7 @@ if(!$GLOBALS["connect"]){
 
 
 
-	$jsondata = file_get_contents("C:\\xampp\htdocs\data\generic.json");
+	$jsondata = file_get_contents("../../../data/generic.json");
 	$json = json_decode($jsondata,true);
 
 	foreach ($json as $ele) {
