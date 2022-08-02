@@ -20,7 +20,7 @@
 						name varchar(255) default " " NOT NULL,
 						types JSON,
 						address varchar(255) default "" NOT NULL,
-
+						coords JSON,
 						rating float(3,1),
 						rating_n smallint(4),
 						
@@ -41,16 +41,7 @@
 		)Engine=InnoDB;
 
 
-	DROP TABLE IF EXISTS coords;
-	CREATE TABLE coords(
-						poiID varchar(255) NOT NULL,
-						lat float(10,7) NOT NULL,
-						lng float(10,7) NOT NULL,
-						primary key(poiID),
-						constraint coordsPOIS
-						foreign key(poiID) references Poi(id)
-						ON DELETE CASCADE ON UPDATE CASCADE
-		)Engine=InnoDB;
+
 
 
 	DROP TABLE IF EXISTS place;

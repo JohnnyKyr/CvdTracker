@@ -14,19 +14,19 @@ if(!$GLOBALS["connect"]){
 
 //Clear data from tables;
  mysqli_query($GLOBALS['connect'] ,"delete from poi;");
- mysqli_query($GLOBALS['connect'] ,"delete from coords;");
+
  mysqli_query($GLOBALS['connect'] ,"delete from popularity;");
 
 
 
 
 
-	function insertPoi($id,$name,$types,$address,$rating,$rating_n){
+	function insertPoi($id,$name,$types,$address,$coords,$rating,$rating_n){
 		
 		$res = json_encode($types);
-		
+		$jcoords = json_encode($coords);
 
-		$query = "INSERT INTO poi(id,name,types,address,rating,rating_n) VALUES('$id','$name','$res','$address','$rating','$rating_n')";
+		$query = "INSERT INTO poi(id,name,types,address,coords,rating,rating_n) VALUES('$id','$name','$res','$address','$jcoords','$rating','$rating_n')";
 
 		$res = mysqli_query($GLOBALS['connect'] ,$query);
 
@@ -35,14 +35,7 @@ if(!$GLOBALS["connect"]){
 		}
 	}
 
-	function insertCoords($poiID,$lat,$lng){
-		$query = "INSERT INTO coords(poiID,lat,lng) VALUES('$poiID','$lat','$lng')";
-		$res = mysqli_query($GLOBALS['connect'] ,$query);
-
-		if(!$res){
-			echo "Error during insert Coords";
-		}
-	}
+	
 
 	function popularity($poiID,$day,$data){
 		$res = json_encode($data);
@@ -57,12 +50,12 @@ if(!$GLOBALS["connect"]){
 
 
 
-	$jsondata = file_get_contents("../generic.json");
+	$jsondata = file_get_contents("C:\\xampp\htdocs\data\generic.json");
 	$json = json_decode($jsondata,true);
 
 	foreach ($json as $ele) {
-		insertPoi($ele["id"],$ele["name"],$ele["types"],$ele["address"],$ele["rating"],$ele["rating_n"]);
-		insertCoords($ele["id"], $ele["coordinates"]["lat"], $ele["coordinates"]["lng"]);
+		insertPoi($ele["id"],$ele["name"],$ele["types"],$ele["address"],$ele["coordinates"],$ele["rating"],$ele["rating_n"]);
+		
 		foreach ($ele["populartimes"] as $day) {
 			popularity($ele["id"],$day["name"],$day["data"]);
 			
