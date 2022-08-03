@@ -1,33 +1,29 @@
 <?php
-$server = "localhost";
-$user = "root";
-$db_password = "";
-$database = "covidtrack";
+    require_once 'dbh.php';
 
-$connect = mysqli_connect($server, $user, $db_password, $database);
-if(!$connect){
-    die("Error: Cannot connect to database" . mysqli_coonect_errno());
-}
-
-$lng = array();
-$lat = array();
-function getPois($connect){
-    $select = mysqli_query($connect, "SELECT coords FROM poi ;");
-    if(mysqli_num_rows($select) ){
-        while($coords = mysqli_fetch_assoc($select)){
-            $temp = json_decode($coords["coords"],true);
-            $GLOBALS['lat'][] = $temp["lat"];
-            $GLOBALS['lng'][] = $temp["lng"];
-            
-            
+    $lng = array();
+    $lat = array();
+    $id = array();
+    function getCoords($connect){
+        $select = mysqli_query($connect, "SELECT coords,id FROM poi ;");
+        if(mysqli_num_rows($select) ){
+            while($row = mysqli_fetch_assoc($select)){
+                $temp = json_decode($row["coords"],true);
+                $GLOBALS['lat'][] = $temp["lat"];
+                $GLOBALS['lng'][] = $temp["lng"];
+                $GLOBALS['id'][] = $row["id"];
+                
+            }
         }
     }
-}
-getPois($connect);
 
-echo json_encode(
-    array(
-        'lat' => $lat,
-        'lng' => $lng
-    )
-);
+
+    getCoords($connect);
+
+    echo json_encode(
+        array(
+            'lat' => $lat,
+            'lng' => $lng,
+            'id' => $id
+        )
+    );
