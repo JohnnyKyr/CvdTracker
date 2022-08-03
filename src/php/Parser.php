@@ -15,7 +15,7 @@ if(!$GLOBALS["connect"]){
 //Clear data from tables;
  mysqli_query($GLOBALS['connect'] ,"delete from poi;");
 
- mysqli_query($GLOBALS['connect'] ,"delete from popularity;");
+ //mysqli_query($GLOBALS['connect'] ,"delete from popularity;");
 
 
 
@@ -25,7 +25,7 @@ if(!$GLOBALS["connect"]){
 		
 		$res = json_encode($types);
 		$jcoords = json_encode($coords);
-
+		echo $name."<br>";
 		$query = "INSERT INTO poi(id,name,types,address,coords,rating,rating_n) VALUES('$id','$name','$res','$address','$jcoords','$rating','$rating_n')";
 
 		$res = mysqli_query($GLOBALS['connect'] ,$query);
@@ -48,9 +48,9 @@ if(!$GLOBALS["connect"]){
 	}
 
 
+	function main($path){
 
-
-	$jsondata = file_get_contents("../../../data/generic.json");
+	$jsondata = file_get_contents($path);
 	$json = json_decode($jsondata,true);
 
 	foreach ($json as $ele) {
@@ -61,5 +61,10 @@ if(!$GLOBALS["connect"]){
 			
 		}	
 	}	
+}
+	main("../../../data/starting_pois.json");
+	main("../../../data/generic.json");
+	main("../../../data/specific.json");
+	
 
  ?>
