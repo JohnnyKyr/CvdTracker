@@ -32,6 +32,13 @@
             this.zoom = zoom;
             }
         }
+        var blueIcon = L.icon({
+
+            iconUrl: '../images/blue.png',
+            iconSize:     [38, 38], // size of the icon
+            iconAnchor:   [22, 37], // point of the icon which will correspond to marker's location
+           
+              })
         let mycurr = new CurrentPossition([38.25, 21.745],12)
         
         var map = L.map('map').setView(mycurr.poos, mycurr.zoom);
@@ -40,7 +47,7 @@
         attribution: '© OpenStreetMap'}).addTo(map);    
 
         
-        L.marker(mycurr.poos).addTo(map);
+        L.marker(mycurr.poos,{icon:blueIcon}).addTo(map);
 
 
    </script>
