@@ -37,7 +37,7 @@ forma.submit.addEventListener('click', (event) =>{
 
 function handleErrors(responseObject) {
     if (responseObject.ok){
-        location.href = '../html/map.html';
+        location.href = '../html/inde.html';
     }else{
         //username is blank
         if(responseObject.messages[0] === 0){
