@@ -49,7 +49,7 @@ function si_handleErrors(responseObject) {
     
         if(responseObject.messages[2] === 0){
             setErrorFor(si_form.si_password, 'Not a matching combination');
-            setErrorFor(si_form.si_username, '');
+            setErrorFor(si_form.si_username, 'Not a matching combination');
             
         }
     

@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+
 ?>
 
 
@@ -12,14 +14,8 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CVDtrack User Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/adminDashboard.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-    crossorigin=""></script>
-    <style>#map { height: 500px; box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.5); margin: 10px 100px; }</style>
+    <link rel="stylesheet" href="../css/userSettings.css">
+    <script src="../javascript/userSettings.js"></script>
     
 </head>
 <body>
@@ -80,22 +76,34 @@ session_start();
         </div>
 
         <div class="main">
-            <div id="map"></div>
-            <h2 id="test">test</h2>
+            <div class="contain">
+            <div class="inner-box">
+
+            <div class="username-box">
+            <label for="username">Change Username</label> 
+                    <div>    
+                        <input type="text" id="username" placeholder="username"> 
+                        <small>error</small>
+                    </div>
+            </div>
+
+            <div class="password-box">
+            <label for="password">Change Password</label> 
+                    <div>   
+                        <input type="text" id="password" placeholder="password">
+                        <small>error</small>
+                    </div>
+            </div>
+                
+            <button>Stage Changes</button>
+            </div>
 
 
         </div>
     </div>
-
-    <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '© OpenStreetMap'
-    }).addTo(map);
-    </script>
-    <script src="../javascript/map.js"></script>
-    <script src="../javascript/user.js"></script>
+    
 </body>
 
 </html>
+
+

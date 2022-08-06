@@ -60,7 +60,7 @@ session_start();
                 </li>
           
                 <li>
-                    <a href="#">
+                    <a href="userSettings.php">
                     <i class="fas fa-cog"></i>
                     <div>Settings</div>
                     </a>

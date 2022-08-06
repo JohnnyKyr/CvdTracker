@@ -314,4 +314,14 @@ visibility: hidden;
 	right: 90px;
 }
 
+#sin_username i{
+	position: absolute;
+	top: 158px;
+	right: 90px;
+}
 
+#sin_password i{
+	position: absolute;
+	top: 228px;
+	right: 90px;
+}
