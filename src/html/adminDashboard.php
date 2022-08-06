@@ -32,36 +32,14 @@
                     <div>Dashboard</div>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                    <i class="fas fa-user-graduate"></i>
-                    <div>Students</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <div>Teachers</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                    <i class="fas fa-users"></i>
-                    <div>Employees</div>
-                    </a>
-                </li>
+
                 <li>
                     <a href="#">
                     <i class="fas fa-chart-bar"></i>
                     <div>Analytics</div>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <div>Earnings</div>
-                    </a>
-                </li>
+          
                 <li>
                     <a href="#">
                     <i class="fas fa-cog"></i>
@@ -70,10 +48,18 @@
                 </li>
                 <li>
                     <a href="#">
-                    <i class="fas fa-question"></i>
-                    <div>Help</div>
+                    <i class="fa-solid fa-upload"></i>
+                    <div>Upload</div>
                     </a>
                 </li>
+
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    <div>Log Out</div>
+                    </a>
+                </li>
+
             </ul>
         </div>
         <div class="main">
@@ -81,40 +67,40 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="number">1217</div>
-                        <div class="card-name">Students</div>
+                        <div class="card-name">Views</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-user-graduate "></i>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="number">42</div>
-                        <div class="card-name">Teacher</div>
-                    </div>
-                    <div class="icon-box">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                        <i class="fa-solid fa-eye"></i>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-content">
                         <div class="number">68</div>
-                        <div class="card-name">Employees</div>
+                        <div class="card-name">Total</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-users"></i>
+                        <i class="fa-solid fa-database"></i>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">$4500</div>
-                        <div class="card-name">Earnings</div>
+                        <div class="number">42</div>
+                        <div class="card-name">Confirmed Cases</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fa-solid fa-mask-face"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number">250</div>
+                        <div class="card-name">Views of CC</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class="fa-solid fa-arrows-to-eye"></i>
                     </div>
                 </div>
             </div>

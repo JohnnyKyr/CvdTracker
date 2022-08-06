@@ -1,10 +1,16 @@
+<?php
+session_start();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin panel</title>
+    <title>CVDtrack User Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="../css/adminDashboard.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
@@ -35,60 +41,47 @@
 
         <div class="sidebar">
             <ul>
-                <li>
-                    <a href="#">
-                    <i class="fas fa-th-large"></i>
-                    <div>Dashboard</div>
+            <li>
+                    <a href="user.php">
+                    <i class="fa-solid fa-map"></i>
+                    <div>Map</div>
                     </a>
                 </li>
+
                 <li>
                     <a href="#">
-                    <i class="fas fa-user-graduate"></i>
-                    <div>Students</div>
+                    <i class="fa-solid fa-virus"></i>
+                    <div>Test</div>
                     </a>
                 </li>
+
                 <li>
-                    <a href="#">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <div>Teachers</div>
+                    <a href="userList.php">
+                    <i class="fa-solid fa-rectangle-list"></i>
+                    <div>List</div>
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                    <i class="fas fa-users"></i>
-                    <div>Employees</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                    <i class="fas fa-chart-bar"></i>
-                    <div>Analytics</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                    <i class="fas fa-hand-holding-usd"></i>
-                    <div>Earnings</div>
-                    </a>
-                </li>
+          
                 <li>
                     <a href="#">
                     <i class="fas fa-cog"></i>
                     <div>Settings</div>
                     </a>
                 </li>
+
                 <li>
                     <a href="#">
-                    <i class="fas fa-question"></i>
-                    <div>Help</div>
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    <div>Log Out</div>
                     </a>
                 </li>
+
             </ul>
         </div>
 
         <div class="main">
             <div id="map"></div>
-            </div>
+            <h2 id="test">test</h2>
 
 
         </div>
@@ -102,6 +95,7 @@
     }).addTo(map);
     </script>
     <script src="../javascript/map.js"></script>
+    <script src="../javascript/user.js"></script>
 </body>
 
 </html>

@@ -36,7 +36,7 @@ si_form.si_submit.addEventListener('click', (event) =>{
 
 function si_handleErrors(responseObject) {
     if (responseObject.ok){
-        location.href = '../html/inde.html';
+        location.href = '../html/user.php';
     }else{
         if(responseObject.messages[0] === 0){
             console.log(responseObject);

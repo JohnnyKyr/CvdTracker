@@ -103,3 +103,5 @@ function doNotMatch($connect,$username, $password){
         return false;
     }
 }
+
+?>
