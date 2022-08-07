@@ -86,14 +86,19 @@ session_start();
 
         <div class="main">
             <div id="map"></div>
-            <h2 id="test">test</h2>
+                
+                <button type="submit" id="submit" name="map-submit">Recenter</button>
+               
+            
 
 
         </div>
     </div>
 
     <script>
-        var map = L.map('map').setView([51.505, -0.09], 13);
+        var defaultPos = {coords :[38.25, 21.745] , zoom :12};
+
+        var map = L.map('map').setView(defaultPos.coords,defaultPos.zoom);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap'
@@ -101,6 +106,7 @@ session_start();
     </script>
     <script src="../javascript/map.js"></script>
     <script src="../javascript/user.js"></script>
+    
 </body>
 
 </html>

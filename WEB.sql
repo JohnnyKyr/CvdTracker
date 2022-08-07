@@ -10,6 +10,7 @@
 							password varchar(255) NOT NULL, 
 							email varchar(255) NOT NULL,
 							cvdtmstmp varchar(255) default NULL,
+							privilages default NULL,
 							primary key(username)
 		)Engine=InnoDB;
 

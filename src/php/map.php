@@ -9,7 +9,7 @@
     $data = array();
     $address = array();
     
-    $day = "Friday";
+    $day = "Saturday";
     $query = "select popularity.data,poi.name,poi.id,poi.coords,
      poi.address,poi.rating from poi inner join popularity on poi.id=popularity.popID
       where popularity.day='$day';";
