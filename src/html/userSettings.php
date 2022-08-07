@@ -18,7 +18,6 @@ session_start();
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     
-    <script src="../javascript/userSettings.js"></script>
     <link rel="stylesheet" href="../css/userSettings.css">
     
 </head>
@@ -80,13 +79,13 @@ session_start();
         </div>
 
         <div class="main">
-            <form action="POST">
+            <form action="../php/userSettingsRequest.php" method="post" id="form" >
             <div class="contain">
             <div class="inner-box">
 
             <div class="username-box">
             <label for="username">Change Username</label> 
-                    <div class="form_control error">    
+                    <div class="form_control">    
                         <input type="text" id="username" placeholder= "<?php echo $_SESSION["username"];?>" name="username"> 
                         <i class="fa fa-check-circle"></i>
 				        <i class="fa fa-exclamation-circle"></i>
@@ -96,7 +95,7 @@ session_start();
 
             <div class="password-box">
             <label for="password">Change Password</label> 
-                    <div class="form_control error">   
+                    <div class="form_control">   
                         <input type="text" id="password" placeholder="password" name="password">
                         <i class="fa fa-check-circle"></i>
 				        <i class="fa fa-exclamation-circle"></i>
@@ -104,13 +103,14 @@ session_start();
                     </div>
             </div>
                 
-            <button type="submit">Stage Changes</button>
+            <button type="submit" name="submit" id="submit">Stage Changes</button>
             </div>
             </form>
         </div>
         
     </div>
-    
+
+<script src="../javascript/userSettings.js"></script>
 </body>
 
 </html>

@@ -11,7 +11,7 @@ function emptyInputSignup($username){
 }
 
 function usernameExists($connect, $username){
-    $select = mysqli_query($connect, "SELECT * FROM user WHERE username = '".$_POST['username']."'");
+    $select = mysqli_query($connect, "SELECT * FROM user WHERE username = '$username'");
     if(mysqli_num_rows($select)){
     return true;
     }else{
@@ -92,7 +92,8 @@ function createUser($connect, $username, $password, $email){
     exit();
     
 }
-//kanw ena allo sxolio
+
+
 function doNotMatch($connect,$username, $password){
     $select = mysqli_query($connect, "SELECT password FROM user WHERE username = '$username'");
     if(mysqli_num_rows($select) ){
@@ -103,5 +104,17 @@ function doNotMatch($connect,$username, $password){
         return false;
     }
 }
+
+function updateUser($connect,$username,$newUsername){
+
+    $sql = "UPDATE user SET username = '$newUsername'  WHERE username = '$username'";
+    $select = mysqli_query($connect, $sql);
+}
+
+    
+    
+
+    
+
 
 ?>

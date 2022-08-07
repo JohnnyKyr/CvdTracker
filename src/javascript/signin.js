@@ -46,6 +46,11 @@ function si_handleErrors(responseObject) {
         if(responseObject.messages[1] === 0){
             setErrorFor(si_form.si_password, 'Password cannot be blank');
         }
+
+        if(responseObject.messages[3] == 0){
+            setErrorFor(si_form.si_password, 'Not a matching combination');
+            setErrorFor(si_form.si_username, 'Not a matching combination');
+        }
     
         if(responseObject.messages[2] === 0){
             setErrorFor(si_form.si_password, 'Not a matching combination');

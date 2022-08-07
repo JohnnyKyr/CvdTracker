@@ -6,7 +6,7 @@ const forma = {
     submit : document.getElementById("submit")
 
 };
-console.log(forma);
+
 
 forma.submit.addEventListener('click', (event) =>{
     event.preventDefault();

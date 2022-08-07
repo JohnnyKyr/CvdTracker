@@ -32,6 +32,13 @@ if(doNotMatch($connect,$si_username, $si_password)){
     $messages[2] = 1;
 }
 
+if (!usernameExists($connect,$si_username) !== false){
+    $ok = false;
+    $messages[3] = 0;
+}else{
+    $messages[3] = 1;
+}
+
 $_SESSION["username"] = $si_username;
 
 echo json_encode(
