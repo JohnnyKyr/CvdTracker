@@ -61,12 +61,3 @@
 				)Engine=InnoDB;
 
 
-	DROP TABLE IF EXISTS ConfirmedCase;
-
-	CREATE TABLE ConfirmedCase(
-						poiID varchar(255) default " " NOT NULL,
-						primary key(poiID),
-						constraint ConfC
-						foreign key(poiID) references place(poiID)
-						ON DELETE CASCADE ON UPDATE CASCADE
-	)Engine=InnoDB;

@@ -105,7 +105,7 @@ session_start();
     }).addTo(map);
     </script>
     <script src="../javascript/map.js"></script>
-    <script src="../javascript/user.js"></script>
+    <!-- <script src="../javascript/user.js"></script> -->
     
 </body>
 

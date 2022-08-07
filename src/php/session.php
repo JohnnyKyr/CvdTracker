@@ -1,5 +1,14 @@
 
 <?php
 session_start();
-echo "user is " . $_SESSION["username"] . ".<br>";
+$username =  $_SESSION["username"];
+
+
+echo json_encode(
+    array(
+        'username' => $username
+    )
+);
+
+
 ?>

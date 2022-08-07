@@ -22,6 +22,37 @@ const map_form = {
 
 };
 
+var username = "";
+
+const request = new XMLHttpRequest();
+
+request.onload = () => {
+    let responseObject = null;
+
+    try{
+        responseObject = JSON.parse(request.responseText);
+
+    }catch(e){
+        console.error("Could not parse JSON");
+    }
+
+    if (responseObject){
+        
+        username = responseObject.username;
+        console.log('enadyo');
+        console.log(username);
+        
+    }
+};
+
+
+const requestData = ``;
+
+request.open('post', '../php/session.php');
+request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+request.send(requestData);
+
+
 map_form.map_submit.addEventListener('click', (event) =>{
     
     event.preventDefault();
@@ -76,7 +107,7 @@ function HandleResponse(responseObject){
 function SetMarkers(hour){
     map.setView(new L.LatLng(38.25, 21.745),12);
     
-    console.log("Ia ma heres");
+    console.log(username);
     for(let i=0;i<marker.length;i++){
         
         coords = [marker[i].lat,marker[i].lng];
@@ -93,7 +124,7 @@ function SetMarkers(hour){
 
 markerLayer.addEventListener("click",(event)=>{
     
-
+    
     popupmarker = marker.find(marker => marker.lat === event.latlng.lat,marker.lng===event.latlng.lng);
     
     popestimation = parseInt( popupmarker.data[date.getHours()]) +parseInt( popupmarker.data[date.getHours()+1])+ parseInt(popupmarker.data[date.getHours()+2])
@@ -101,34 +132,37 @@ markerLayer.addEventListener("click",(event)=>{
 
     popup
         .setLatLng(event.latlng)
-        .setContent( popupmarker["name"] +"  "+ popupmarker["rating"] + "<br>"+ popupmarker["address"]+"<br>" +"Estimation: "+ Math.round(popestimation/3)+"<br>" + "<button onclick = 'registerVisit()' >Show Pois</button>")
+        .setContent( popupmarker["name"] +"  "+ popupmarker["rating"] + "<br>"+ popupmarker["address"]+"<br>" +"Estimation: "+ Math.round(popestimation/3)+"<br>" + "<button type='button' id='visit_reg'>Visit Register</button>")
         .openOn(map);
 });
 
-function registerVisit(event){
+
+// var visit_reg = document.getElementById("visit_reg");
+document.getElementById("visit_reg").innerText = 'kaka';
+document.getElementById("visit_reg").addEventListener("click",(event)=>{
     place = marker.find(marker => marker.lat === event.latlng.lat,marker.lng===event.latlng.lng);
-    const request = new XMLHttpRequest();
+        const request = new XMLHttpRequest();
 
-    request.onload = () => {
-        let responseObject = null;
+        request.onload = () => {
+            let responseObject = null;
 
-        try{
-            responseObject = JSON.parse(request.responseText);
+            try{
+                responseObject = JSON.parse(request.responseText);
 
-        }catch(e){
-            console.error("Could not parse JSON");
-        }
+            }catch(e){
+                console.error("Could not parse JSON");
+            }
 
-        if (responseObject){
-            dataResponse(responseObject);
-        }
-    };
+            if (responseObject){
+                dataResponse(responseObject);
+            }
+                };
 
-    const requestData = `poiID=${place.id}&userID=${}&tmpstmp&numofp`;
-    
-    request.open('post', '../php/map.php');
-    request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    request.send(requestData);
-}
+        const requestData = `poiID=${place.id}&userID=${username}&tmstmp=${NULL}&numofp=${NULL}`;
 
-function dataResponse()
+        request.open('post', '../php/visitRegister.php');
+        request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        request.send(requestData);
+    });
+
+
