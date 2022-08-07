@@ -1,7 +1,8 @@
+
 <?php
 session_start();
-
-
+// echo "user is " . $_SESSION["username"] . ".<br>";
+// echo session_id();
 ?>
 
 
@@ -14,8 +15,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CVDtrack User Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/userSettings.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'> 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    
     <script src="../javascript/userSettings.js"></script>
+    <link rel="stylesheet" href="../css/userSettings.css">
     
 </head>
 <body>
@@ -66,7 +70,7 @@ session_start();
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="index.php">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     <div>Log Out</div>
                     </a>
@@ -76,30 +80,35 @@ session_start();
         </div>
 
         <div class="main">
+            <form action="POST">
             <div class="contain">
             <div class="inner-box">
 
             <div class="username-box">
             <label for="username">Change Username</label> 
-                    <div>    
-                        <input type="text" id="username" placeholder="username"> 
+                    <div class="form_control error">    
+                        <input type="text" id="username" placeholder= "<?php echo $_SESSION["username"];?>" name="username"> 
+                        <i class="fa fa-check-circle"></i>
+				        <i class="fa fa-exclamation-circle"></i>
                         <small>error</small>
                     </div>
             </div>
 
             <div class="password-box">
             <label for="password">Change Password</label> 
-                    <div>   
-                        <input type="text" id="password" placeholder="password">
-                        <small>error</small>
+                    <div class="form_control error">   
+                        <input type="text" id="password" placeholder="password" name="password">
+                        <i class="fa fa-check-circle"></i>
+				        <i class="fa fa-exclamation-circle"></i>
+                        <small>There is an error</small>
                     </div>
             </div>
                 
-            <button>Stage Changes</button>
+            <button type="submit">Stage Changes</button>
             </div>
-
-
+            </form>
         </div>
+        
     </div>
     
 </body>

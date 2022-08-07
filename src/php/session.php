@@ -1,14 +1,5 @@
 
 <?php
 session_start();
+echo "user is " . $_SESSION["username"] . ".<br>";
 ?>
-<!DOCTYPE html>
-<html>
-<body>
-
-<?php
-echo "Favorite color is " . $_SESSION["username"] . ".<br>";
-?>
-
-</body>
-</html>

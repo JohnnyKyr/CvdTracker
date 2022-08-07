@@ -1,3 +1,9 @@
+<?php
+session_start();
+echo "user is " . $_SESSION["username"] . ".<br>";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +60,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="index.php">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     <div>Log Out</div>
                     </a>

@@ -1,5 +1,8 @@
+
 <?php
 session_start();
+// echo "user is " . $_SESSION["username"] . ".<br>";
+// echo session_id();
 ?>
 
 
@@ -20,6 +23,7 @@ session_start();
     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
     crossorigin=""></script>
     <style>#map { height: 500px; box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.5); margin: 10px 100px; }</style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     
 </head>
 <body>
@@ -70,7 +74,8 @@ session_start();
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="index.php">
+                        
                         <i class="fa-solid fa-right-from-bracket"></i>
                     <div>Log Out</div>
                     </a>

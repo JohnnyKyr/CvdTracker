@@ -5,6 +5,10 @@
     font-family: 'poppins', sans-serif;
 }
 
+* {
+	box-sizing: border-box;
+}
+
 .topbar{
     position: fixed;
     background: #fff;
@@ -191,7 +195,7 @@ button {
     position: relative;
     left: 155px;
 	border-radius: 20px;
-	border: 1px solid #299B63;
+	border: 2px solid #299B63;
 	background-color: #299B63;
 	color: #FFFFFF;
 	font-size: 12px;
@@ -201,7 +205,12 @@ button {
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 	cursor: pointer;
-	margin: 5px 0;
+	margin: 20px 0;
+}
+
+input:focus{
+    transform: scale(1.03);
+    outline: none;
 }
 
 button:hover{
@@ -211,5 +220,42 @@ button:hover{
 }
 
 input:focus{
-    background-color: rgb(237, 237, 237);
+    background-color: rgba(229, 229, 229, 0.54);
+}
+
+.form_control.success input{
+	border-color: #2ecc71;
+}
+
+.form_control.error input{
+	border-color: #ff4b37d7;	
+}
+
+.form_control.success i.fa-check-circle{
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.form_control.error i.fa-exclamation-circle{
+	color: #ff4b37d7;
+	visibility: visible;
+}
+
+.form_control i{
+    visibility: hidden;
+}
+
+
+.form_control.error small{
+    position: relative;
+    left: 70px;
+	visibility: visible;
+	color: #ff4b37d7;
+
+}
+
+.form_control.error i{
+    position: absolute;
+    top: 35px;
+    left: 240px;
 }
