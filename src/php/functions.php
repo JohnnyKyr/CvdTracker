@@ -77,8 +77,8 @@ function validPassword($password){
 }
 
 
-function createUser($connect, $username, $password, $email){
-    $sql = "INSERT INTO user (username, password, email) VALUES (?, ?, ?);";
+function createUser($connect, $username, $password, $email,$privilages){
+    $sql = "INSERT INTO user (username, password, email,privilages) VALUES (?, ?, ?,?);";
     $stmt = mysqli_stmt_init($connect);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         exit();
@@ -86,10 +86,10 @@ function createUser($connect, $username, $password, $email){
 
     $hashedPassowrd = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sss", $username, $hashedPassowrd, $email);
+    mysqli_stmt_bind_param($stmt, "sssi", $username, $hashedPassowrd, $email, $privilages);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    exit();
+    //exit();
     
 }
 
@@ -111,10 +111,18 @@ function updateUser($connect,$username,$newUsername){
     $select = mysqli_query($connect, $sql);
 }
 
+function isAdmin($connect,$username){
+    $sql = "SELECT privilages FROM user WHERE username = '$username'";
+    $select = mysqli_query($connect,$sql);
     
+    $response= mysqli_fetch_assoc($select);
     
-
-    
+    if($response['privilages'][0] == 0){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 
 ?>

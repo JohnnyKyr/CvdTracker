@@ -92,8 +92,8 @@ if($ok == true){
         )
     );
 
-    createUser($connect, $username, $password, $email);
-    exit;
+    createUser($connect, $username, $password, $email,0);
+    exit();
 }
 
 echo json_encode(

@@ -10,7 +10,7 @@
 							password varchar(255) NOT NULL, 
 							email varchar(255) NOT NULL,
 							cvdtmstmp varchar(255) default NULL,
-							privilages default NULL,
+							privilages INT(9),
 							primary key(username)
 		)Engine=InnoDB;
 
@@ -22,7 +22,7 @@
 						types JSON,
 						address varchar(255) default "" NOT NULL,
 						coords JSON,
-						rating float(3,1),
+						rating  float(3,1),
 						rating_n smallint(4),
 						
 						primary key(id)

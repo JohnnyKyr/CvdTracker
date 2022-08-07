@@ -1,5 +1,8 @@
 <?php 
 
+require_once "functions.php";
+require_once "dbh.php";
+
 $server = "localhost";
 $user = "root";
 $ps = "";
@@ -67,27 +70,21 @@ $lastNameCollection = array("Ruth","Jackson",
 
 
 $fullNameCollection = array();
-for($i = 0; $i < 1000;$i++) {
+for($i = 0; $i < 20;$i++) {
     $newFirstName = $firstNameCollection[rand(0, count($firstNameCollection)-1)];
     $newLastName = $lastNameCollection[rand(0, count($lastNameCollection)-1)];
 
     $fullNameCollection[] = $newFirstName." ".$newLastName;
 }
 foreach ($fullNameCollection as $key ) {
-	
+   
 	$username= random_username($key);
 	$email = "$username"."@mail.com";
 	$password = randomPassword();
-	$uniqid = uniqid();
-	$userQuery = "INSERT INTO user (id,username, password, email) VALUES ('$uniqid','$username','$password','$email')";
-	$result = mysqli_query($connect, $userQuery);
-	if (!$result){
-	    die("Could not run query". mysqli_error($connect));
-	}
-	else{
-	    print("User Added <br>");
-	}
+    createUser($connect, $username, $password, $email,0);
 }
+//Admin Users
 
-
+    createUser($connect, "Giannis","A123123U","Janni@gmail.com",1);
+    createUser($connect,"Xaris","123qwe!@#QWE","xaroulis@gmail.com",1);
 ?>

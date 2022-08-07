@@ -39,6 +39,13 @@ if (!usernameExists($connect,$si_username) !== false){
     $messages[3] = 1;
 }
 
+if (isAdmin($connect,$si_username) == false){
+    
+    $messages[4] = 0;
+}else{
+    $messages[4] = 1;
+}
+
 $_SESSION["username"] = $si_username;
 
 echo json_encode(
