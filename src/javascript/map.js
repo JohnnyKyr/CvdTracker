@@ -121,10 +121,11 @@ function SetMarkers(hour){
     }
 }
 
+currentSelectedLocation = {"lat":0,"lng":0};
 
 markerLayer.addEventListener("click",(event)=>{
     
-    
+    currentSelectedLocation={"lat":event.latlng.lat,"lng":event.latlng.lng}
     popupmarker = marker.find(marker => marker.lat === event.latlng.lat,marker.lng===event.latlng.lng);
     
     popestimation = parseInt( popupmarker.data[date.getHours()]) +parseInt( popupmarker.data[date.getHours()+1])+ parseInt(popupmarker.data[date.getHours()+2])
@@ -132,37 +133,25 @@ markerLayer.addEventListener("click",(event)=>{
 
     popup
         .setLatLng(event.latlng)
-        .setContent( popupmarker["name"] +"  "+ popupmarker["rating"] + "<br>"+ popupmarker["address"]+"<br>" +"Estimation: "+ Math.round(popestimation/3)+"<br>" + "<button type='button' id='visit_reg'>Visit Register</button>")
+        .setContent( popupmarker["name"] +"  "+ popupmarker["rating"] + "<br>"+ popupmarker["address"]+"<br>" +"Estimation: "+ Math.round(popestimation/3)+"<br>" + "<button onclick = 'visitReg()'>Visit Register</button>")
         .openOn(map);
 });
 
 
-// var visit_reg = document.getElementById("visit_reg");
-document.getElementById("visit_reg").innerText = 'kaka';
-document.getElementById("visit_reg").addEventListener("click",(event)=>{
-    place = marker.find(marker => marker.lat === event.latlng.lat,marker.lng===event.latlng.lng);
-        const request = new XMLHttpRequest();
+function visitReg(){
+    
+    poiname = marker.find(marker => marker.lat === currentSelectedLocation.lat,marker.lng===currentSelectedLocation.lng);
+    const request = new XMLHttpRequest();
 
         request.onload = () => {
             let responseObject = null;
 
-            try{
-                responseObject = JSON.parse(request.responseText);
+        }
 
-            }catch(e){
-                console.error("Could not parse JSON");
-            }
-
-            if (responseObject){
-                dataResponse(responseObject);
-            }
-                };
-
-        const requestData = `poiID=${place.id}&userID=${username}&tmstmp=${NULL}&numofp=${NULL}`;
+        const requestData = `poiID=${poiname.id}&userID=${username}`;
 
         request.open('post', '../php/visitRegister.php');
         request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
         request.send(requestData);
-    });
-
-
+    
+}
