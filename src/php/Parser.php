@@ -21,12 +21,11 @@ if(!$GLOBALS["connect"]){
 
 
 
-	function insertPoi($id,$name,$types,$address,$coords,$rating,$rating_n){
+	function insertPoi($id,$name,$types,$address,$lat,$lng,$rating,$rating_n){
 		
 		$res = json_encode($types);
-		$jcoords = json_encode($coords);
-		echo $name."<br>";
-		$query = "INSERT INTO poi(id,name,types,address,coords,rating,rating_n) VALUES('$id','$name','$res','$address','$jcoords','$rating','$rating_n')";
+		
+		$query = "INSERT INTO poi(id,name,types,address,lat,lng,rating,rating_n) VALUES('$id','$name','$res','$address','$lat','$lng','$rating','$rating_n')";
 
 		$res = mysqli_query($GLOBALS['connect'] ,$query);
 
@@ -54,7 +53,8 @@ if(!$GLOBALS["connect"]){
 	$json = json_decode($jsondata,true);
 
 	foreach ($json as $ele) {
-		insertPoi($ele["id"],$ele["name"],$ele["types"],$ele["address"],$ele["coordinates"],$ele["rating"],$ele["rating_n"]);
+		echo $ele["coordinates"]["lat"]. "<br>";
+		insertPoi($ele["id"],$ele["name"],$ele["types"],$ele["address"],$ele["coordinates"]["lat"],$ele["coordinates"]["lng"],$ele["rating"],$ele["rating_n"]);
 		
 		foreach ($ele["populartimes"] as $day) {
 			popularity($ele["id"],$day["name"],$day["data"]);
