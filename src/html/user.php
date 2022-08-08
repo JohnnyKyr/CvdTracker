@@ -5,22 +5,27 @@ session_start();
 require_once '../php/dbh.php';
 
 // get the views from the database
-$sql = ("SELECT views FROM views");
+// $sql = ("SELECT views FROM views");
+// $select = mysqli_query($connect, $sql);
+// $dbViews = mysqli_fetch_assoc($select)['views'];
+// $_SESSION["views"] = $dbViews;
+
+// if(isset($_SESSION['views'])){
+//     $_SESSION['views']++;
+// }
+
+// $views = $_SESSION["views"];
+
+// // update views to the database
+// $sql = ("UPDATE views SET views = '$views'");
+// $select = mysqli_query($connect, $sql);
+
+$userID = $_SESSION["username"];
+$timezone = date_default_timezone_set('Europe/Athens');
+$timestamp = date('Y/m/d h:i:s ', time());
+// insert name and timestamp into the database
+$sql = ("INSERT INTO log(userID, tmstmp) VALUES('$userID','$timestamp')");
 $select = mysqli_query($connect, $sql);
-$dbViews = mysqli_fetch_assoc($select)['views'];
-$_SESSION["views"] = $dbViews;
-
-if(isset($_SESSION['views'])){
-    $_SESSION['views']++;
-}
-
-$views = $_SESSION["views"];
-
-// update views to the database
-$sql = ("UPDATE views SET views = '$views'");
-$select = mysqli_query($connect, $sql);
-
-
 
 
 ?>
@@ -73,7 +78,7 @@ $select = mysqli_query($connect, $sql);
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="userTest.php">
                     <i class="fa-solid fa-virus"></i>
                     <div>Test</div>
                     </a>

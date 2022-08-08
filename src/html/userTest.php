@@ -83,29 +83,11 @@ session_start();
             <div class="contain">
             <div class="inner-box">
 
-            <div class="username-box">
-            <label for="username">Change Username</label> 
-                    <div class="form_control">    
-                        <input type="text" id="username" placeholder= "<?php echo $_SESSION["username"];?>" name="username"> 
-                        <i class="fa fa-check-circle"></i>
-				        <i class="fa fa-exclamation-circle"></i>
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        <small>error</small>
-                    </div>
-            </div>
+                <h2>Submit Positive CVD-Test</h2>
 
-            <div class="password-box">
-            <label for="password">Change Password</label> 
-                    <div class="form_control">   
-                        <input type="password" id="password" placeholder="password" name="password">
-                        <i class="fa fa-check-circle"></i>
-				        <i class="fa fa-exclamation-circle"></i>
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        <small>There is an error</small>
-                    </div>
+            
+             
             </div>
-                
-            <button type="submit" name="submit" id="submit">Stage Changes</button>
             </div>
             </form>
         </div>

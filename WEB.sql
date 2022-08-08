@@ -62,9 +62,10 @@
 				)Engine=InnoDB;
 
 
-	DROP TABLE IF EXISTS views;
-	CREATE TABLE views(
-						views INT(11) default 0 NOT NULL
+	DROP TABLE IF EXISTS log;
+	CREATE TABLE log(
+						views INT(11) AUTO_INCREMENT,
+						userID varchar(255),
+						tmstmp DATETIME,
+						primary key(views)
 				)Engine=InnoDB;
-
-	INSERT INTO views VALUES();

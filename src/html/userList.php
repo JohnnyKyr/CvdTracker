@@ -46,7 +46,7 @@ session_start();
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="userTest.php">
                     <i class="fa-solid fa-virus"></i>
                     <div>Test</div>
                     </a>
