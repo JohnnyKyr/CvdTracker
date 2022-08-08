@@ -89,6 +89,7 @@ session_start();
                         <input type="text" id="username" placeholder= "<?php echo $_SESSION["username"];?>" name="username"> 
                         <i class="fa fa-check-circle"></i>
 				        <i class="fa fa-exclamation-circle"></i>
+                        <i class="fa-solid fa-triangle-exclamation"></i>
                         <small>error</small>
                     </div>
             </div>
@@ -99,6 +100,7 @@ session_start();
                         <input type="text" id="password" placeholder="password" name="password">
                         <i class="fa fa-check-circle"></i>
 				        <i class="fa fa-exclamation-circle"></i>
+                        <i class="fa-solid fa-triangle-exclamation"></i>
                         <small>There is an error</small>
                     </div>
             </div>

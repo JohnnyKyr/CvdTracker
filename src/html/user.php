@@ -1,8 +1,12 @@
 
 <?php
 session_start();
-// echo "user is " . $_SESSION["username"] . ".<br>";
-// echo session_id();
+if(isset($_SESSION['views'])){
+    echo "Site has views" . $_SESSION['views'];
+    $_SESSION['views']++;
+}else{
+    $_SESSION['views'] = 1;
+}
 ?>
 
 
