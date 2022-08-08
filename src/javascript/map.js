@@ -92,55 +92,74 @@ var popup = L.popup();
 let marker = Array();
 const date = new Date();
 function HandleResponse(responseObject){
-   
+    hour = date.getHours();
     for (let i = 0; i < responseObject.lat.length; i++) {
-        marker[i] = {"lat":responseObject.lat[i],"lng": responseObject.lng[i],
-        "id":responseObject.id[i],"name":responseObject.name[i],"rating":responseObject.rating[i],
-        "data":responseObject.data[i].match(/\d+/g),"address":responseObject.address[i]}
+        coords = [responseObject.lat[i],responseObject.lng[i]];
+        popularity = responseObject.data[i].match(/\d+/g)
+        if (popularity[hour]<=32)
+        L.marker(coords,{icon:greemarker}).addTo(markerLayer);
+        if (popularity[hour]>=32 &&popularity[hour]<= 65)
+        L.marker(coords,{icon:yellowmarker}).addTo(markerLayer);
+        if (popularity[hour]>=66)
+        L.marker(coords,{icon:redmarker}).addTo(markerLayer);
+
+
+
+      
        // L.marker([responseObject.lat[i],responseObject.lng[i]]).bindPopup("Hello").addTo(markerLayer);
       }
       
-      SetMarkers(date.getHours());
 }
 
 
-function SetMarkers(hour){
-    map.setView(new L.LatLng(38.25, 21.745),12);
-    
-    console.log(username);
-    for(let i=0;i<marker.length;i++){
-        
-        coords = [marker[i].lat,marker[i].lng];
-        if (marker[i].data[hour]<=32)
-        L.marker(coords,{icon:greemarker}).addTo(markerLayer);
-        if (marker[i].data[hour]>=32 &&marker[i].data[hour]<= 65)
-        L.marker(coords,{icon:yellowmarker}).addTo(markerLayer);
-        if (marker[i].data[hour]>=66)
-        L.marker(coords,{icon:redmarker}).addTo(markerLayer);
-        
-    }
-}
+
 
 currentSelectedLocation = {"lat":0,"lng":0};
-
+poiname = "";
 markerLayer.addEventListener("click",(event)=>{
-    
-    currentSelectedLocation={"lat":event.latlng.lat,"lng":event.latlng.lng}
-    popupmarker = marker.find(marker => marker.lat === event.latlng.lat,marker.lng===event.latlng.lng);
-    
-    popestimation = parseInt( popupmarker.data[date.getHours()]) +parseInt( popupmarker.data[date.getHours()+1])+ parseInt(popupmarker.data[date.getHours()+2])
-    
 
-    popup
-        .setLatLng(event.latlng)
-        .setContent( popupmarker["name"] +"  "+ popupmarker["rating"] + "<br>"+ popupmarker["address"]+"<br>" +"Estimation: "+ Math.round(popestimation/3)+"<br>" + "<button onclick = 'visitReg()'>Visit Register</button>")
-        .openOn(map);
+   currentSelectedLocation = {"lat":event.latlng.lat,"lng":event.latlng.lng}
+
+
+    const request = new XMLHttpRequest();
+
+    request.onload = () => {
+        let responseObject = null;
+
+        try{
+            responseObject = JSON.parse(request.responseText);
+
+        }catch(e){
+            console.error("Could not parse JSON");
+        }
+
+        if (responseObject){
+            poiname = responseObject.id[0];
+            
+            popestimation = parseInt( responseObject.data[date.getHours()]) +parseInt( responseObject.data[date.getHours()+1])+ parseInt(responseObject.data[date.getHours()+2])
+            popup
+                .setLatLng(event.latlng)
+                .setContent( responseObject.name +"  "+ responseObject.rating + "<br>"+ responseObject.address+"<br>" +"Estimation: "+ Math.round(popestimation/3)+"<br>" + "<button onclick = 'visitReg()'>Visit Register</button>")
+                .openOn(map);
+        
+        }
+    };
+
+    
+    const requestData = `lat=${event.latlng.lat}&lng=${event.latlng.lng}`;
+
+    request.open('post', '../php/dispData.php');
+    request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    request.send(requestData);
+    
+    
 });
 
 
+
 function visitReg(){
+    console.log(poiname);
     
-    poiname = marker.find(marker => marker.lat === currentSelectedLocation.lat,marker.lng===currentSelectedLocation.lng);
     const request = new XMLHttpRequest();
 
         request.onload = () => {
@@ -148,7 +167,7 @@ function visitReg(){
 
         }
 
-        const requestData = `poiID=${poiname.id}&userID=${username}`;
+        const requestData = `poiID=${poiname}&userID=${username}`;
 
         request.open('post', '../php/visitRegister.php');
         request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
