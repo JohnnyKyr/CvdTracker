@@ -4,13 +4,6 @@ if(isset($_SESSION)) {
 	session_abort();
 }
 
-if(isset($_SESSION)) {
-echo session_id();
-}
-
-// if(!isset($_SESSION)) {
-// 	echo "barbouni";
-// 	}
 ?>
 
 <!DOCTYPE html>

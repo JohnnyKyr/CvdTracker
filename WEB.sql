@@ -62,4 +62,9 @@
 				)Engine=InnoDB;
 
 
+	DROP TABLE IF EXISTS views;
+	CREATE TABLE views(
+						views INT(11) default 0 NOT NULL
+				)Engine=InnoDB;
 
+	INSERT INTO views VALUES();

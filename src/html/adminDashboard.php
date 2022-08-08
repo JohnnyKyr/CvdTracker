@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo "user is " . $_SESSION["username"] . ".<br>";
+
 ?>
 
 
@@ -72,7 +72,7 @@ echo "user is " . $_SESSION["username"] . ".<br>";
             <div class="cards">
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">1217</div>
+                        <div class="number"><?php echo $_SESSION["views"];?></div>
                         <div class="card-name">Views</div>
                     </div>
                     <div class="icon-box">

@@ -115,6 +115,9 @@ function isAdmin($connect,$username){
     $sql = "SELECT privilages FROM user WHERE username = '$username'";
     $select = mysqli_query($connect,$sql);
     
+    if(!mysqli_num_rows($select)){
+        return false;
+    }
     $response= mysqli_fetch_assoc($select);
     
     if($response['privilages'][0] == 0){

@@ -97,7 +97,7 @@ session_start();
             <div class="password-box">
             <label for="password">Change Password</label> 
                     <div class="form_control">   
-                        <input type="text" id="password" placeholder="password" name="password">
+                        <input type="password" id="password" placeholder="password" name="password">
                         <i class="fa fa-check-circle"></i>
 				        <i class="fa fa-exclamation-circle"></i>
                         <i class="fa-solid fa-triangle-exclamation"></i>

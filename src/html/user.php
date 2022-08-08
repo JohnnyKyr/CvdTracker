@@ -1,12 +1,28 @@
 
 <?php
 session_start();
+
+require_once '../php/dbh.php';
+
+// get the views from the database
+$sql = ("SELECT views FROM views");
+$select = mysqli_query($connect, $sql);
+$dbViews = mysqli_fetch_assoc($select)['views'];
+$_SESSION["views"] = $dbViews;
+
 if(isset($_SESSION['views'])){
-    echo "Site has views" . $_SESSION['views'];
     $_SESSION['views']++;
-}else{
-    $_SESSION['views'] = 1;
 }
+
+$views = $_SESSION["views"];
+
+// update views to the database
+$sql = ("UPDATE views SET views = '$views'");
+$select = mysqli_query($connect, $sql);
+
+
+
+
 ?>
 
 
