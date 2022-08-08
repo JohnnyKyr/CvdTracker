@@ -21,7 +21,8 @@
 						name varchar(255) default " " NOT NULL,
 						types JSON,
 						address varchar(255) default "" NOT NULL,
-						coords JSON,
+						lat FLOAT(50),
+						lng FLOAT(50),
 						rating  float(3,1),
 						rating_n smallint(4),
 						
@@ -59,5 +60,6 @@
 						foreign key(userID) references user(username)
 						ON DELETE CASCADE ON UPDATE CASCADE
 				)Engine=InnoDB;
+
 
 
