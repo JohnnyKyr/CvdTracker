@@ -124,5 +124,11 @@ function isAdmin($connect,$username){
     }
 }
 
+function updatePassword($connect,$username,$password){
+        $hashedPassowrd = password_hash($password, PASSWORD_DEFAULT);
+        $sql = ("UPDATE user SET password = '$hashedPassowrd' WHERE username = '$username'");
+        $select = mysqli_query($connect, $sql);
+    
+}
 
 ?>

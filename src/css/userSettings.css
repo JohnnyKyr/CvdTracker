@@ -163,7 +163,7 @@ input {
 
 .inner-box label{
     position: relative;
-    left: 22px;
+    left: 55px;
 }
 
 .username-box{
@@ -231,10 +231,21 @@ input:focus{
 	border-color: #ff4b37d7;	
 }
 
+.form_control.warning input{
+	border-color: #ff8737d7;	
+}
+
 .form_control.success i.fa-check-circle{
 	color: #2ecc71;
 	visibility: visible;
 }
+
+.form_control.warning i.fa-triangle-exclamation{
+    color: #ff8737d7;
+	visibility: visible;
+}
+
+
 
 .form_control.error i.fa-exclamation-circle{
 	color: #ff4b37d7;
@@ -248,13 +259,34 @@ input:focus{
 
 .form_control.error small{
     position: relative;
-    left: 70px;
+    left: 50px;
 	visibility: visible;
 	color: #ff4b37d7;
 
 }
 
+.form_control.warning small{
+    position: relative;
+    left: 50px;
+	visibility: visible;
+	color: #ff8737d7;
+
+}
+
 .form_control.error i{
+    position: absolute;
+    top: 35px;
+    left: 240px;
+}
+
+
+.form_control.warning i{
+    position: absolute;
+    top: 35px;
+    left: 240px;
+}
+
+.form_control.success i{
     position: absolute;
     top: 35px;
     left: 240px;

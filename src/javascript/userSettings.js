@@ -37,12 +37,37 @@ form.submit.addEventListener('click', (event) =>{
 
 
 function errorHandle(responseObject){
-    if(responseObject.message === 0){
+    if(responseObject.messages[0] === 0){
         setErrorFor(username,'Username already exists');
-    }else if(responseObject.message == 1){
+    }
+
+    if(responseObject.messages[1] === 0){
+        setWarningFor(username,'Username did not change!');
+    }
+
+    if(responseObject.messages[0] === 1 && responseObject.messages[1] === 1 ){
         setSuccessFor(username);
     }
 
+    if(responseObject.messages[2] === 0){
+        setWarningFor(password,'Password did not change!');
+    }
+
+    if(responseObject.messages[3] === 0){
+        setErrorFor(password,'Password is too small');
+    }
+
+    if(responseObject.messages[4] === 0){
+        setErrorFor(password,'Invalid password');
+    }
+
+    if(responseObject.messages[2] === 0){
+        setWarningFor(password,'Password did not change!');
+    }
+    
+    if(responseObject.messages[2] === 1 && responseObject.messages[3] === 1 && responseObject.messages[4] === 1 ){
+        setSuccessFor(password);
+    }
 }
 
 
@@ -57,4 +82,11 @@ function setSuccessFor(input){
     const formControl = input.parentElement;
     formControl.className = 'form_control success';
     
+}
+
+function setWarningFor(input, message){
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small');
+    small.innerText = message;
+    formControl.className = 'form_control warning';
 }

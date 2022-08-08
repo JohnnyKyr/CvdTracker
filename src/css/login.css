@@ -224,13 +224,13 @@ input {
 }
 
 #signUp{
-    position: relative;
-    top: 95px;
+    position: absolute;
+    top: 324px;
 }
 
 #signIn{
-    position: relative;
-    top: -2px
+    position: absolute;
+    top: 345px;
 }
 
 .ghost:hover{
