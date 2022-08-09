@@ -1,8 +1,7 @@
 
 <?php
 session_start();
-// echo "user is " . $_SESSION["username"] . ".<br>";
-// echo session_id();
+
 ?>
 
 
@@ -79,11 +78,20 @@ session_start();
         </div>
 
         <div class="main">
-            <form action="../php/userSettingsRequest.php" method="post" id="form" >
+            <form action="../php/userTestRequest.php" method="post" id="form" >
             <div class="contain">
             <div class="inner-box">
 
-                <h2>Submit Positive CVD-Test</h2>
+
+            <label>
+            Submit the test
+            <input type="date" name="date" id="date" min="2019-12-31" max="<?php echo date("Y-m-d"); ?>" required>
+            <span class="validity"></span>
+            </label>
+      
+            <p>
+            <button id="submit">Submit</button>
+            </p>
 
             
              
@@ -94,7 +102,7 @@ session_start();
         
     </div>
 
-<script src="../javascript/userSettings.js"></script>
+<script src="../javascript/userTest.js"></script>
 </body>
 
 </html>
