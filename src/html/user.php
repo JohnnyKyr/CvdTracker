@@ -44,6 +44,7 @@ $select = mysqli_query($connect, $sql);
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
     integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
     crossorigin=""/>
+    
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
     crossorigin=""></script>
@@ -112,9 +113,9 @@ $select = mysqli_query($connect, $sql);
         <div class="main">
             <div id="map"></div>
                 
-                <button type="submit" id="submit" name="map-submit">Recenter</button>
-               
-            
+                <button type="submit" id="submit" name="map-submit">Show Map</button>
+                <button type="center" id= "center" name="map-center">User </button>             
+                <button type="bot" id= "bot" name="bot-mover">$Enable User Movement </button>    
 
 
         </div>
