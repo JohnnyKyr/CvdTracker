@@ -131,6 +131,7 @@
 
 .cards .card:hover{
     background: #299B63;
+    transform: scale(1.06);
 }
 
 .cards .card:hover .number{
