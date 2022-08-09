@@ -1,6 +1,26 @@
 <?php
 session_start();
 
+require_once '../php/dbh.php';
+// get the views
+$sql = ("SELECT views FROM log  ORDER BY log . views DESC");
+$select = mysqli_query($connect, $sql);
+$dbViews = mysqli_fetch_assoc($select)['views'];
+$_SESSION["views"] = $dbViews;
+
+//get the total users
+$sql = ("SELECT COUNT(username) as total FROM user");
+$select = mysqli_query($connect, $sql);
+$total = mysqli_fetch_assoc($select)['total'];
+$_SESSION["total"] = $total;
+
+//get the confirmed cases
+$sql = ("SELECT COUNT(cvdtmstmp) as ccNumber FROM user");
+$select = mysqli_query($connect, $sql);
+$ccNumber = mysqli_fetch_assoc($select)['ccNumber'];
+$_SESSION["ccNumber"] = $ccNumber;
+
+
 ?>
 
 
@@ -45,13 +65,7 @@ session_start();
                     <div>Analytics</div>
                     </a>
                 </li>
-          
-                <li>
-                    <a href="#">
-                    <i class="fas fa-cog"></i>
-                    <div>Settings</div>
-                    </a>
-                </li>
+
                 <li>
                     <a href="#">
                     <i class="fa-solid fa-upload"></i>
@@ -82,8 +96,8 @@ session_start();
                 
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">68</div>
-                        <div class="card-name">Total</div>
+                        <div class="number"><?php echo $_SESSION["total"];?></div> 
+                        <div class="card-name">Total Users</div>
                     </div>
                     <div class="icon-box">
                         <i class="fa-solid fa-database"></i>
@@ -92,7 +106,7 @@ session_start();
                 
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">42</div>
+                        <div class="number"><?php echo $_SESSION["ccNumber"];?></div> 
                         <div class="card-name">Confirmed Cases</div>
                     </div>
                     <div class="icon-box">
@@ -103,7 +117,7 @@ session_start();
                 <div class="card">
                     <div class="card-content">
                         <div class="number">250</div>
-                        <div class="card-name">Views of CC</div>
+                        <div class="card-name">Views by CC</div>
                     </div>
                     <div class="icon-box">
                         <i class="fa-solid fa-arrows-to-eye"></i>
@@ -123,6 +137,7 @@ session_start();
             </div>
         </div>
     </div>
+
 
     <script src="../javascript/chart1.js"></script>
     <script src="../javascript/chart2.js"></script>
