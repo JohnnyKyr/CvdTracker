@@ -66,10 +66,17 @@ $_SESSION["ccNumber"] = $ccNumber;
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
+                <li type="button" id="btn" onclick="doThis()">
+                    <a href="#" >
                     <i class="fa-solid fa-upload"></i>
-                    <div>Upload</div>
+
+
+                    <form id="form" action="../php/adminUpload.php" method="POST" enctype="multipart/form-data">
+                        <input type="file" onchange="doThat()" accept=".json, .txt" multiple id="file" name="files">
+                        <input type="submit" name="submit" id="submitButton">
+                    </form>
+                    
+                    <div class= "uploadfile">Upload</div>
                     </a>
                 </li>
 
@@ -138,7 +145,19 @@ $_SESSION["ccNumber"] = $ccNumber;
         </div>
     </div>
 
+    <script>
+        function doThis(){
+            document.getElementById('btn').onclick = function() {
+            document.getElementById('file').click();
+};
+        }
 
+        function doThat(){
+            document.getElementById('submitButton').click();
+        }
+    </script>
+
+    <script src="../javascript/adminUpload.js"></script>
     <script src="../javascript/chart1.js"></script>
     <script src="../javascript/chart2.js"></script>
 </body>

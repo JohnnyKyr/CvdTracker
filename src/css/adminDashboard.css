@@ -161,6 +161,20 @@
     color: #299B63;
 }
 
+#file{
+    visibility: hidden;
+}
+
+.uploadfile{
+    position: absolute;
+    left: 60px;
+}
+
+#submitButton{
+    visibility: hidden;
+
+}
+
 /* charts */
 
 .charts{
@@ -243,3 +257,4 @@
         padding: 0;
     }
 }
+
