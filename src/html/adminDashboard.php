@@ -80,6 +80,14 @@ $_SESSION["ccNumber"] = $ccNumber;
                     </a>
                 </li>
 
+
+                <li  id="delete" onclick="delete()">
+                    <a href="#">
+                        <i class="fa-solid fa-trash-can"></i>
+                    <div>Delete POIs</div>
+                    </a>
+                </li>
+
                 <li>
                     <a href="index.php">
                         <i class="fa-solid fa-right-from-bracket"></i>
@@ -155,9 +163,16 @@ $_SESSION["ccNumber"] = $ccNumber;
         function doThat(){
             document.getElementById('submitButton').click();
         }
+
+        function delete(){
+            <?php
+                $sql = ("DELETE FROM poi");
+                $select = mysqli_query($connect, $sql);    
+            ?>
+
+        }
     </script>
 
-    <script src="../javascript/adminUpload.js"></script>
     <script src="../javascript/chart1.js"></script>
     <script src="../javascript/chart2.js"></script>
 </body>
