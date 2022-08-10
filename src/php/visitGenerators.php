@@ -3,7 +3,6 @@
 //reandom place
 //random numberofp
 require_once "dbh.php";
-require_once "Parser.php";
 require_once "UserGenerator.php";
 $username = array();
 $poi= array();
