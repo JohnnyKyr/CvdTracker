@@ -157,14 +157,17 @@ $_SESSION["ccNumber"] = $ccNumber;
         function doThis(){
             document.getElementById('btn').onclick = function() {
             document.getElementById('file').click();
-};
         }
-
+        
+        }
         function doThat(){
             document.getElementById('submitButton').click();
         }
 
-        function delete(){
+    </script>
+
+    <script>
+                function delete(){
             <?php
                 $sql = ("DELETE FROM poi");
                 $select = mysqli_query($connect, $sql);    
