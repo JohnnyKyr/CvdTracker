@@ -36,8 +36,9 @@ $_SESSION["ccNumber"] = $ccNumber;
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.0/dist/chart.min.js"></script>
 </head>
 <body>
+
     <div class="container">
-        <div class="topbar">
+        <div class="topbar" id="topbar">
             <div class="logo">
                 <h2>CVDtrack</h2>
             </div>
@@ -81,7 +82,7 @@ $_SESSION["ccNumber"] = $ccNumber;
                 </li>
 
 
-                <li  id="delete" onclick="delete()">
+                <li  id="delete">
                     <a href="#">
                         <i class="fa-solid fa-trash-can"></i>
                     <div>Delete POIs</div>
@@ -97,7 +98,13 @@ $_SESSION["ccNumber"] = $ccNumber;
 
             </ul>
         </div>
-        <div class="main">
+        <div class="main" id="main">
+
+        <div class="alert" id="alert">
+            <span class="closebtn" id="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <p id="text">...</p>
+        </div> 
+
             <div class="cards">
                 <div class="card">
                     <div class="card-content">
@@ -157,25 +164,25 @@ $_SESSION["ccNumber"] = $ccNumber;
         function doThis(){
             document.getElementById('btn').onclick = function() {
             document.getElementById('file').click();
+            
         }
         
         }
         function doThat(){
             document.getElementById('submitButton').click();
+            closebtn = document.getElementById("closebtn");
+            closebtn.parentElement.style.display='block';
+            text = document.getElementById("text");
+            text.innerText = "Inserting POIs data to the database...";
+            topbar = document.getElementById("topbar");
+            main = document.getElementById("main");
+            topbar.style.cursor = "wait"; 
+            main.style.cursor = "wait";
         }
 
     </script>
 
-    <script>
-                function delete(){
-            <?php
-                $sql = ("DELETE FROM poi");
-                $select = mysqli_query($connect, $sql);    
-            ?>
-
-        }
-    </script>
-
+    <script src="../javascript/deletePois.js"></script>
     <script src="../javascript/chart1.js"></script>
     <script src="../javascript/chart2.js"></script>
 </body>
