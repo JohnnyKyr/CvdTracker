@@ -1,6 +1,5 @@
 <?php 
 
-
 $server = "localhost";
 $user = "root";
 $ps = "";
@@ -62,9 +61,9 @@ if(!$GLOBALS["connect"]){
 		}	
 	}	
 }
-	main("../../../data/starting_pois.json");
-	main("../../../data/generic.json");
-	main("../../../data/specific.json");
+	main("uploads/starting_pois.json");
+	// main("uploads/generic.json");
+	// main("uploads/specific.json");
 	
 
  ?>

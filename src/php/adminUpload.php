@@ -9,4 +9,6 @@ if(isset($_POST['submit'])){
     move_uploaded_file($temp_location, $fileDestination);
     header("location: ../html/adminDashboard.php");
 }
+
+include 'Parser.php';
 ?>
