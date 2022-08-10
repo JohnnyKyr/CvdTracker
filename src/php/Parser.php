@@ -11,14 +11,6 @@ if(!$GLOBALS["connect"]){
     die("Error: Cannot connect to database" . mysqli_coonect_errno());
 	}
 
-//Clear data from tables;
- mysqli_query($GLOBALS['connect'] ,"delete from poi;");
-
- //mysqli_query($GLOBALS['connect'] ,"delete from popularity;");
-
-
-
-
 
 	function insertPoi($id,$name,$types,$address,$lat,$lng,$rating,$rating_n){
 		
