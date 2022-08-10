@@ -61,9 +61,6 @@ if(!$GLOBALS["connect"]){
 		}	
 	}	
 }
-	main("uploads/starting_pois.json");
-	// main("uploads/generic.json");
-	// main("uploads/specific.json");
 	
 
  ?>

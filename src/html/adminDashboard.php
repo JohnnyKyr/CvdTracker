@@ -72,7 +72,7 @@ $_SESSION["ccNumber"] = $ccNumber;
 
 
                     <form id="form" action="../php/adminUpload.php" method="POST" enctype="multipart/form-data">
-                        <input type="file" onchange="doThat()" accept=".json, .txt" multiple id="file" name="files">
+                        <input type="file" onchange="doThat()" accept=".json, .txt" id="file" name="files">
                         <input type="submit" name="submit" id="submitButton">
                     </form>
                     
