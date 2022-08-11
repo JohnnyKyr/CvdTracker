@@ -2,7 +2,7 @@
 // random user
 //reandom place
 //random numberofp
-require_once "dbh.php";
+require_once "../php/dbh.php";
 require_once "UserGenerator.php";
 $username = array();
 $poi= array();
