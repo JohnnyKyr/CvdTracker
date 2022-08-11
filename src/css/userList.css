@@ -13,6 +13,10 @@ body{
 
 }
 
+*{
+    letter-spacing: 1px;
+}
+
 table{
     position: sticky;
     left: 500px;
@@ -20,7 +24,6 @@ table{
     margin-top: 10px;
     border-collapse: collapse;
     width: 800px;
-    height: 220px;
     border: 1px solid #bdc3c7;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.5);
 
@@ -33,7 +36,8 @@ tr{
 
 th,td{
     padding: 12px;
-    text-align: left;
+    height: 63px;
+    text-align: center;
     border-bottom: 1px solid #ddd ;
 }
 

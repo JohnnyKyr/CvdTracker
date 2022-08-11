@@ -159,7 +159,6 @@ button {
 	font-size: 12px;
 	font-weight: bold;
 	padding: 12px 45px;
-	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 	cursor: pointer;
@@ -199,7 +198,6 @@ button:hover{
     position: absolute;
     left: 200px;
     top: 35px;
-    letter-spacing: 2px;
     font-size: 20px;
 
 }

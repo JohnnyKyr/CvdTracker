@@ -96,8 +96,7 @@ session_start();
 
                 <tbody>                    
                     <tr>
-                        <td"></td>
-                    </tr>
+                        
                     </tr>
                 </tbody>
                 </table>
@@ -115,10 +114,10 @@ session_start();
 
                 <tbody>                    
                     <tr>
-                        <td></td>
+                        
                     </tr>
 
-                    </tr>
+                
                 </tbody>
                 </table>
             </div>
