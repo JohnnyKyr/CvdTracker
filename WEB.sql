@@ -9,7 +9,6 @@
 							username varchar(255) NOT NULL,
 							password varchar(255) NOT NULL, 
 							email varchar(255) NOT NULL,
-							cvdtmstmp varchar(255) default NULL,
 							privilages INT(9),
 							primary key(username)
 		)Engine=InnoDB;
@@ -69,3 +68,16 @@
 						tmstmp DATETIME,
 						primary key(views)
 				)Engine=InnoDB;
+
+
+	DROP TABLE IF EXISTS hasCovid;
+	CREATE TABLE hasCovid(
+						
+						id varchar(255) NOT NULL,
+						covid DATE,
+						status varchar(255) NOT NULL,
+						primary key(id),
+						constraint Hcovid
+						foreign key(id) references user(username)
+						ON DELETE CASCADE ON UPDATE CASCADE
+		)Engine=InnoDB;

@@ -294,7 +294,7 @@ function submitVisit(){
 
         const requestData = `poiID=${poiname}&userID=${username}&numOfP=${num.value}`;
 
-        request.open('post', '../php/visitRegister.php');
+        request.open('post', '../php/setVisit.php');
         request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
         request.send(requestData);
 }

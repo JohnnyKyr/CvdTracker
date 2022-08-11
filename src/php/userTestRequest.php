@@ -5,7 +5,7 @@ include '../php/dbh.php';
 $username = $_SESSION['username'];
 $date = $_POST['date'];
 
-$sql = ("UPDATE user SET cvdtmstmp = '$date' WHERE username = '$username'");
+$sql = "INSERT INTO hasCovid(id,covid,status) VALUES('$username','$date','active')";
 $select = mysqli_query($connect, $sql);
 
 
