@@ -15,7 +15,7 @@ $total = mysqli_fetch_assoc($select)['total'];
 $_SESSION["total"] = $total;
 
 //get the confirmed cases
-$sql = ("SELECT COUNT(cvdtmstmp) as ccNumber FROM user");
+$sql = ("SELECT COUNT(id) as ccNumber FROM hasCovid");
 $select = mysqli_query($connect, $sql);
 $ccNumber = mysqli_fetch_assoc($select)['ccNumber'];
 $_SESSION["ccNumber"] = $ccNumber;
