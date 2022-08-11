@@ -91,11 +91,18 @@ $select = mysqli_query($connect, $sql);
                     <div>List</div>
                     </a>
                 </li>
-          
+                
                 <li>
                     <a href="userSettings.php">
                     <i class="fas fa-cog"></i>
                     <div>Settings</div>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="userHistory.php">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <div>History</div>
                     </a>
                 </li>
 

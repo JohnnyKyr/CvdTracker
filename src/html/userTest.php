@@ -68,6 +68,13 @@ session_start();
                 </li>
 
                 <li>
+                    <a href="userHistory.php">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <div>History</div>
+                    </a>
+                </li>
+
+                <li>
                     <a href="index.php">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     <div>Log Out</div>

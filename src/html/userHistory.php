@@ -15,8 +15,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/adminDashboard.css">
-    <link rel="stylesheet" href="../css/userList.css">
-
+    <link rel="stylesheet" href="../css/userHistory.css">
     
 </head>
 <body>
@@ -84,6 +83,8 @@ session_start();
         </div>
 
         <div class="main">
+
+            <!-- table 1 -->
             <div id="list">
                 <table id="table">
                 <thead>
@@ -102,13 +103,30 @@ session_start();
                 </table>
             </div>
 
+            <!-- table 2 -->
+            <div id="lister">
+                <table id="tablea">
+                <thead>
+                    <tr id="header">
+                        <th>Positive Test</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>                    
+                    <tr>
+                        <td></td>
+                    </tr>
+
+                    </tr>
+                </tbody>
+                </table>
+            </div>
 
         </div>
     </div>
-
     
-
-    <script src="../javascript/userList.js"></script>
+    <script src="../javascript/userHistory.js"></script>
 </body>
 
 </html>
