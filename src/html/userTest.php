@@ -85,6 +85,12 @@ session_start();
         </div>
 
         <div class="main">
+
+            <div class="alert" id="alert">
+                <span class="closebtn" id="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                <p id="text">...</p>
+            </div> 
+
             <form action="../php/userTestRequest.php" method="post" id="form" >
             <div class="contain">
             <div class="inner-box">
@@ -98,7 +104,7 @@ session_start();
             
       
             <p>
-            <button id="submit">Submit</button>
+            <button id="submit" onclick="showMessage()">Submit</button>
             </p>
 
             
@@ -110,6 +116,15 @@ session_start();
         
     </div>
 
+
+<script>
+    function showMessage(){
+        alert = document.getElementById("alert");
+        text = document.getElementById("text");
+        text.innerText = "Positive test has been successfully submitted...Take care!"
+        alert.style.display = "block";
+    }
+</script>
 <script src="../javascript/userTest.js"></script>
 </body>
 
