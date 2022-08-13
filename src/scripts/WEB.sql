@@ -12,11 +12,7 @@
 							privilages INT(9),
 							primary key(username)
 		)Engine=InnoDB;
-	
 
-	-- admins
-	INSERT INTO user (username,password,email,privilages) VALUES ('Xaris','123qwe!@#QWE','xaris@mail.com',1);
-	INSERT INTO user (username,password,email,privilages) VALUES ('Giannis','A123123U','giannis@mail.com',1);
 
 	DROP TABLE IF EXISTS Poi;
 
@@ -75,8 +71,9 @@
 						tmstmp DATETIME,
 						primary key(views)
 				)Engine=InnoDB;
-
+	
 	INSERT INTO log VALUES();
+
 
 	DROP TABLE IF EXISTS hasCovid;
 	CREATE TABLE hasCovid(
