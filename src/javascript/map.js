@@ -48,7 +48,7 @@ const bot_form = {
 
 
 var defaultPos = {coords :[38.25, 21.745] , zoom :12};  //Default coords => Init Map
-var userLocation = {coords :[38.25,21.745] , zoom :17}; //User deafault position =>Init User Marker
+var userLocation = {coords :[38.23774191933105,21.7258232831955 ] , zoom :17}; //User deafault position =>Init User Marker
 
 var circle = L.circle(userLocation.coords, {
     color: '#00bfff',
@@ -123,7 +123,7 @@ function getDistance(x1, y1, x2, y2){
 bot_form.moving_bot.addEventListener('click', (e) =>{
     /* Moving bot's eventListner */
     map.on("click",(event)=>{
-        
+        console.log(event.latlng);
         userLocation.coords[0] = event.latlng.lat;
         userLocation.coords[1] = event.latlng.lng;
         
