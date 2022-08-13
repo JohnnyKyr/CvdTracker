@@ -47,12 +47,14 @@
 
 	DROP TABLE IF EXISTS place;
 	CREATE TABLE place(
+						visitID INT(11) AUTO_INCREMENT,
 						poiID varchar(255) default " " NOT NULL,
 						userID varchar(255) default " " NOT NULL,
 						tmstmp DATETIME default CURRENT_TIMESTAMP,
 						numofp INT(10) default NULL,
-						primary key(poiID,userID),
+						primary key(visitID),
 						constraint PlacePOI
+						
 						foreign key(poiID) references Poi(id)
 						ON DELETE CASCADE ON UPDATE CASCADE,
 						constraint PlaceUser
