@@ -1,15 +1,18 @@
 <?php
+session_start();
+$userID = $_SESSION['username'];
 include_once '../php/dbh.php';
 
-
-$sql = " SELECT place.name FROM place INNER JOIN user on user.username = place.userID INNER JOIN hasCovid on user.username=hasCovid.id where hascovid.status = 'active' and  where hour(place.tmstmp) >=hour(current_timestamp())-2 and hour(place.tmstmp) <=hour(current_timestamp())+2;";
-$username = array();
+$sql = "call conn('$userID')";
+$name = array();
+$date = array();
 
 $select = mysqli_query($connect,$GLOBALS['sql']);
 if(mysqli_num_rows($select) ){
 
     while($row = mysqli_fetch_assoc($select)){
-        $GLOBALS['username'][] = $row["username"];
+        $GLOBALS['name'][] = $row["name"];
+        $GLOBALS['date'][] = $row["tempdate"];
         
     }
 }
@@ -18,6 +21,7 @@ if(mysqli_num_rows($select) ){
 
 echo json_encode(
     array(
-        'username' => $username
+        'name' => $name,
+        'date' => $date
     )
 );
