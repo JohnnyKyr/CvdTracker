@@ -83,8 +83,5 @@ foreach ($fullNameCollection as $key ) {
 	$password = randomPassword();
     createUser($connect, $username, $password, $email,0);
 }
-//Admin Users
 
-    createUser($connect, "Giannis","A123123U","Janni@gmail.com",1);
-    createUser($connect,"Xaris","123qwe!@#QWE","xaroulis@gmail.com",1);
 ?>
