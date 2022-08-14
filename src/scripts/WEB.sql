@@ -1,9 +1,13 @@
 	-- INIT DATABASE
-	DROP DATABASE IF EXISTS covidtrack;
-	CREATE DATABASE covidtrack;
-	USE covidtrack;
 
 	DROP TABLE IF EXISTS user;
+	
+	DROP TABLE IF EXISTS Poi;
+	DROP TABLE IF EXISTS popularity;
+	DROP TABLE IF EXISTS hasCovid;
+	DROP TABLE IF EXISTS log;
+	DROP TABLE IF EXISTS place;
+	
 		CREATE TABLE user(
 							
 							username varchar(255) NOT NULL,
@@ -12,6 +16,7 @@
 							privilages INT(9),
 							primary key(username)
 		)Engine=InnoDB;
+
 
 
 	DROP TABLE IF EXISTS Poi;
@@ -30,8 +35,7 @@
 		)Engine=InnoDB;
 
 
-
-	DROP TABLE IF EXISTS popularity;
+	
 	CREATE TABLE popularity(
 						popID varchar(255) NOT NULL,
 						day varchar(255) default "" NOT NULL,
@@ -44,9 +48,6 @@
 
 
 
-
-
-	DROP TABLE IF EXISTS place;
 	CREATE TABLE place(
 						visitID INT(11) AUTO_INCREMENT,
 						poiID varchar(255) default " " NOT NULL,
@@ -63,8 +64,7 @@
 						ON DELETE CASCADE ON UPDATE CASCADE
 				)Engine=InnoDB;
 
-
-	DROP TABLE IF EXISTS log;
+	
 	CREATE TABLE log(
 						views INT(11) AUTO_INCREMENT,
 						userID varchar(255),
@@ -75,7 +75,7 @@
 	INSERT INTO log VALUES();
 
 
-	DROP TABLE IF EXISTS hasCovid;
+	
 	CREATE TABLE hasCovid(
 						reg INT(11) AUTO_INCREMENT,
 						id varchar(255) NOT NULL,
@@ -87,3 +87,44 @@
 						ON DELETE CASCADE ON UPDATE CASCADE
 						
 		)Engine=InnoDB;
+
+
+	DROP PROCEDURE if EXISTS conn;
+    	DELIMITER $$
+	CREATE PROCEDURE Conn(username VARCHAR(255))
+	BEGIN 
+		
+		DECLARE finishedflag INT;
+		DECLARE placename varchar(255);
+        DECLARE name varchar(255);
+         DECLARE nname varchar(255);
+		DECLARE placedate DATETIME;
+        
+		DECLARE cursorU CURSOR FOR
+		SELECT place.poiID, place.tmstmp,poi.name FROM poi,place WHERE place.userID = username AND poi.id = place.poiID AND DATEDIFF(CURDATE(), place.tmstmp) <= 7;
+		DECLARE CONTINUE HANDLER FOR NOT FOUND SET finishedflag=1;
+        
+        DROP TABLE IF EXISTS cvhs;
+        
+		CREATE TEMPORARY TABLE cvhs(
+             name varchar(255) DEFAULT "",
+             tempdate DATETIME DEFAULT NULL
+        );
+
+		OPEN cursorU;
+		SET finishedflag=0;
+		
+		WHILE(finishedflag=0)DO
+        FETCH cursorU INTO placename,placedate,nname ;
+        
+			SELECT place.poiID INTO name from place INNER JOIN hasCovid ON hasCovid.id = place.userID AND hascovid.status="active" WHERE hour(place.tmstmp)>=hour(placedate - INTERVAL 2 HOUR) AND hour(place.tmstmp)<=hour(placedate + INTERVAL 2 HOUR) AND place.poiID = placename AND DAY(place.tmstmp)=DAY(placedate) OR DATEDIFF(placedate, hascovid.covid) >= 7 LIMIT 1 ;
+           	
+            IF name IS NOT NULL  
+            THEN
+			INSERT INTO cvhs(name,tempdate) VALUES(nname,placedate);
+           END IF;
+		END WHILE;
+        
+        SELECT * from cvhs;
+	END $$
+	DELIMITER ;
