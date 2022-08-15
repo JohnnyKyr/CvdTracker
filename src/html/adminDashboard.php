@@ -33,7 +33,8 @@ $_SESSION["ccNumber"] = $ccNumber;
     <title>Admin panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="../css/adminDashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.0/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
 
@@ -68,7 +69,7 @@ $_SESSION["ccNumber"] = $ccNumber;
                 </li>
 
                 <li type="button" id="btn" onclick="doThis()">
-                    <a href="#" >
+                    <a class = "uploaded">
                     <i class="fa-solid fa-upload"></i>
 
 
@@ -149,11 +150,18 @@ $_SESSION["ccNumber"] = $ccNumber;
 
             <div class="charts">
                 <div class="chart">
-                    <h2>Earnings (past 12 months)</h2>
+                    <h2>Visits</h2>
                     <canvas id="lineChart"></canvas>
+                    <div class="divisor">
+                        <input type="date" name="start" id="start" min = '2019-12-31' value = "<?php echo date( "Y-m-d", strtotime('-6 days')); ?>">
+                        <input type="date"name="end" id="end" value="<?php echo date('Y-m-d'); ?>" max = "<?php echo date('Y-m-d'); ?>">
+                        <button id = "filter">filter</button>
+                    </div>
                 </div>
+
+
                 <div class="chart" id="doughnutChart">
-                    <h2>Employees</h2>
+                    <h2>Covid Percentage</h2>
                     <canvas id="doughnut"></canvas>
                 </div>
             </div>
