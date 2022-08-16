@@ -1,6 +1,6 @@
 # CVDtrack
 Web development university project
 
-# Authors
-Xaris Kap -
-Johnny Kyr
+### Authors
+-[Xaris Kap](https://github.com/xariskap)
+-[Johnny Kyr](https://github.com/JohnnyKyr)
