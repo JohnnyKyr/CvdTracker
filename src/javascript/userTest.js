@@ -24,7 +24,7 @@ form.submit.addEventListener('click', (event) =>{
         }
 
         if (responseObject){
-            console.log("ok");
+            errorHandle(responseObject);
             
         }
     };
@@ -35,3 +35,13 @@ form.submit.addEventListener('click', (event) =>{
     request.setRequestHeader('Content-type','application/x-www-form-urlencoded');
     request.send(requestData);
 });
+
+function errorHandle(responseObject){
+    if(responseObject.error == true){
+        alert = document.getElementById("alert");
+        text = document.getElementById("text");
+        text.innerText = "Failed to register the positive test. 14 days have not yet passed...";
+        alert.style.backgroundColor  = '#ff9900c3';
+        alert.style.display = "block";
+    }
+}

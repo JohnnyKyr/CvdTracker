@@ -3,7 +3,7 @@
 //reandom place
 //random numberofp
 require_once "../php/dbh.php";
-require_once "UserGenerator.php";
+//require_once "UserGenerator.php";
 $username = array();
 $poi= array();
 
@@ -24,17 +24,31 @@ if(mysqli_num_rows($select) ){
         
     }
 }
+
+date_default_timezone_set("Europe/Athens");
+$date = date('Y-m-d H:i:s');
 $userlength = count($username);
 $poilength = count($poi);
+
+
 $i=0;
-while($i <$poilength){
-    $k = rand(0,$userlength-1);
-    
-    $numofp = rand(0,100);
-    $query = "INSERT INTO place(poiID,userID,numofp) VALUES('$poi[$i]','$username[$k]','$numofp') "; 
-    $select = mysqli_query($connect, $query);
-    $i++;
-}
+$day = 31;
+$hour = 0;
+
+        while($i <$poilength*4*30*24){
+            $k = rand(0,$userlength-1);
+            $j = rand(0,$poilength-1);
+            $day = rand(1,31);
+            $hour = rand(0,23);
+
+
+            $numofp = rand(0,10);
+            $query = "INSERT INTO place(poiID,userID,tmstmp,numofp) VALUES('$poi[$j]','$username[$k]',CURRENT_TIMESTAMP - INTERVAL '$day' DAY +INTERVAL '$hour' HOUR,'$numofp') "; 
+            $select = mysqli_query($connect, $query);
+            
+            
+            $i++;
+        }
 
 
 

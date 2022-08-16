@@ -4,10 +4,9 @@ $dates = array();
 $values = array();
 $hours = array();
 $startDate = $_POST['startDate'];
-$nextDay = date('Y-m-d', strtotime('+1 day', strtotime($startDate)));
 $allHours = array();
 
-$dates = [$startDate,$nextDay];
+$dates = [$startDate];
 
 $sql = ("SELECT DISTINCT HOUR(tmstmp) FROM place WHERE cast(tmstmp as date) = '$startDate' ORDER BY (HOUR(tmstmp)) ASC;");
 $select = mysqli_query($connect,$GLOBALS['sql']);
@@ -27,7 +26,7 @@ for($i = 0; $i < sizeof($hours); $i++){
     $select = mysqli_query($connect,$GLOBALS['sql']);
     $row = mysqli_fetch_assoc($select);
     $GLOBALS['values'][] = $row["COUNT(tmstmp)"];
-    // print_r($row["COUNT(tmstmp)"]);
+
 
 }
 

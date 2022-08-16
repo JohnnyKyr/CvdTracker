@@ -20,6 +20,11 @@ $select = mysqli_query($connect, $sql);
 $ccNumber = mysqli_fetch_assoc($select)['ccNumber'];
 $_SESSION["ccNumber"] = $ccNumber;
 
+//get visits from CC
+$sql = "SELECT COUNT(*) as tracker  from place INNER JOIN hascovid ON place.userID = hascovid.id WHERE day(hascovid.covid)>=day(hascovid.covid - INTERVAL 7 DAY) AND day(hascovid.covid)<=day(hascovid.covid + INTERVAL 14 DAY);";
+$select = mysqli_query($connect, $sql);
+$visits = mysqli_fetch_assoc($select)['tracker'];
+$_SESSION["visits"] = $visits;
 
 ?>
 
@@ -139,7 +144,7 @@ $_SESSION["ccNumber"] = $ccNumber;
 
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">250</div>
+                        <div class="number"><?php echo $_SESSION["visits"];?></div>
                         <div class="card-name">Views by CC</div>
                     </div>
                     <div class="icon-box">
