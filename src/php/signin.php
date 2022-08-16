@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 $si_username = $_POST['si_username'];
 $si_password = $_POST['si_password'];
@@ -32,7 +32,21 @@ if(doNotMatch($connect,$si_username, $si_password)){
     $messages[2] = 1;
 }
 
+if (!usernameExists($connect,$si_username) !== false){
+    $ok = false;
+    $messages[3] = 0;
+}else{
+    $messages[3] = 1;
+}
 
+if (isAdmin($connect,$si_username) == false){
+    
+    $messages[4] = 0;
+}else{
+    $messages[4] = 1;
+}
+
+$_SESSION["username"] = $si_username;
 
 echo json_encode(
     array(
@@ -40,3 +54,5 @@ echo json_encode(
         'messages' => $messages
     )
 );
+
+?>

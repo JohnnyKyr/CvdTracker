@@ -11,7 +11,7 @@ function emptyInputSignup($username){
 }
 
 function usernameExists($connect, $username){
-    $select = mysqli_query($connect, "SELECT * FROM user WHERE username = '".$_POST['username']."'");
+    $select = mysqli_query($connect, "SELECT * FROM user WHERE username = '$username'");
     if(mysqli_num_rows($select)){
     return true;
     }else{
@@ -77,8 +77,8 @@ function validPassword($password){
 }
 
 
-function createUser($connect, $username, $password, $email){
-    $sql = "INSERT INTO user (username, password, email) VALUES (?, ?, ?);";
+function createUser($connect, $username, $password, $email,$privilages){
+    $sql = "INSERT INTO user (username, password, email,privilages) VALUES (?, ?, ?,?);";
     $stmt = mysqli_stmt_init($connect);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         exit();
@@ -86,13 +86,14 @@ function createUser($connect, $username, $password, $email){
 
     $hashedPassowrd = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sss", $username, $hashedPassowrd, $email);
+    mysqli_stmt_bind_param($stmt, "sssi", $username, $hashedPassowrd, $email, $privilages);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    exit();
+    //exit();
     
 }
-//kanw ena sxolio==
+
+
 function doNotMatch($connect,$username, $password){
     $select = mysqli_query($connect, "SELECT password FROM user WHERE username = '$username'");
     if(mysqli_num_rows($select) ){
@@ -103,3 +104,34 @@ function doNotMatch($connect,$username, $password){
         return false;
     }
 }
+
+function updateUser($connect,$username,$newUsername){
+
+    $sql = "UPDATE user SET username = '$newUsername'  WHERE username = '$username'";
+    $select = mysqli_query($connect, $sql);
+}
+
+function isAdmin($connect,$username){
+    $sql = "SELECT privilages FROM user WHERE username = '$username'";
+    $select = mysqli_query($connect,$sql);
+    
+    if(!mysqli_num_rows($select)){
+        return false;
+    }
+    $response= mysqli_fetch_assoc($select);
+    
+    if($response['privilages'][0] == 0){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+function updatePassword($connect,$username,$password){
+        $hashedPassowrd = password_hash($password, PASSWORD_DEFAULT);
+        $sql = ("UPDATE user SET password = '$hashedPassowrd' WHERE username = '$username'");
+        $select = mysqli_query($connect, $sql);
+    
+}
+
+?>

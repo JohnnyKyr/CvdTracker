@@ -1,6 +1,5 @@
 <?php 
 
-
 $server = "localhost";
 $user = "root";
 $ps = "";
@@ -12,21 +11,12 @@ if(!$GLOBALS["connect"]){
     die("Error: Cannot connect to database" . mysqli_coonect_errno());
 	}
 
-//Clear data from tables;
- mysqli_query($GLOBALS['connect'] ,"delete from poi;");
- mysqli_query($GLOBALS['connect'] ,"delete from coords;");
- mysqli_query($GLOBALS['connect'] ,"delete from popularity;");
 
-
-
-
-
-	function insertPoi($id,$name,$types,$address,$rating,$rating_n){
+	function insertPoi($id,$name,$types,$address,$lat,$lng,$rating,$rating_n){
 		
 		$res = json_encode($types);
 		
-
-		$query = "INSERT INTO poi(id,name,types,address,rating,rating_n) VALUES('$id','$name','$res','$address','$rating','$rating_n')";
+		$query = "INSERT INTO poi(id,name,types,address,lat,lng,rating,rating_n) VALUES('$id','$name','$res','$address','$lat','$lng','$rating','$rating_n')";
 
 		$res = mysqli_query($GLOBALS['connect'] ,$query);
 
@@ -35,14 +25,7 @@ if(!$GLOBALS["connect"]){
 		}
 	}
 
-	function insertCoords($poiID,$lat,$lng){
-		$query = "INSERT INTO coords(poiID,lat,lng) VALUES('$poiID','$lat','$lng')";
-		$res = mysqli_query($GLOBALS['connect'] ,$query);
-
-		if(!$res){
-			echo "Error during insert Coords";
-		}
-	}
+	
 
 	function popularity($poiID,$day,$data){
 		$res = json_encode($data);
@@ -55,18 +38,21 @@ if(!$GLOBALS["connect"]){
 	}
 
 
+	function main($path){
 
-
-	$jsondata = file_get_contents("../generic.json");
+	$jsondata = file_get_contents($path);
 	$json = json_decode($jsondata,true);
 
 	foreach ($json as $ele) {
-		insertPoi($ele["id"],$ele["name"],$ele["types"],$ele["address"],$ele["rating"],$ele["rating_n"]);
-		insertCoords($ele["id"], $ele["coordinates"]["lat"], $ele["coordinates"]["lng"]);
+		echo $ele["coordinates"]["lat"]. "<br>";
+		insertPoi($ele["id"],$ele["name"],$ele["types"],$ele["address"],$ele["coordinates"]["lat"],$ele["coordinates"]["lng"],$ele["rating"],$ele["rating_n"]);
+		
 		foreach ($ele["populartimes"] as $day) {
 			popularity($ele["id"],$day["name"],$day["data"]);
 			
 		}	
 	}	
+}
+	
 
  ?>

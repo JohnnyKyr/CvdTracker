@@ -3,6 +3,7 @@
 
 * {
 	box-sizing: border-box;
+	letter-spacing: 1px;
 }
 
 body {
@@ -224,13 +225,13 @@ input {
 }
 
 #signUp{
-    position: relative;
-    top: 95px;
+    position: absolute;
+    top: 324px;
 }
 
 #signIn{
-    position: relative;
-    top: -2px
+    position: absolute;
+    top: 345px;
 }
 
 .ghost:hover{
@@ -314,4 +315,14 @@ visibility: hidden;
 	right: 90px;
 }
 
+#sin_username i{
+	position: absolute;
+	top: 158px;
+	right: 90px;
+}
 
+#sin_password i{
+	position: absolute;
+	top: 228px;
+	right: 90px;
+}

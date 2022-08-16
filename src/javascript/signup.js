@@ -6,7 +6,7 @@ const forma = {
     submit : document.getElementById("submit")
 
 };
-console.log(forma);
+
 
 forma.submit.addEventListener('click', (event) =>{
     event.preventDefault();
@@ -37,7 +37,7 @@ forma.submit.addEventListener('click', (event) =>{
 
 function handleErrors(responseObject) {
     if (responseObject.ok){
-        location.href = '../html/inde.html';
+        location.href = '../html/index.php';
     }else{
         //username is blank
         if(responseObject.messages[0] === 0){

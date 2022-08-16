@@ -1,0 +1,294 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+.topbar{
+    position: fixed;
+    background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0 , 0, 0.08);
+    width: 100%;
+    padding: 0 20px;
+    display: grid;grid-template-columns: 2fr 10fr 0.4fr 1fr;
+    align-items: center;
+    z-index: 1;
+}
+
+.user{
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.logo h2{
+    color: #299B63;
+}
+
+.search{
+    position: relative;
+    width: 60%;
+    justify-self: center;
+}
+
+.search input{
+    width: 100%;
+    height: 40px;
+    padding: 0 40px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: #f5f5f5;
+}
+
+.search i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+
+}
+
+.user img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* sidebar */
+.sidebar{
+    position: fixed;
+    top: 60px;
+    width: 260px;
+    height: calc(100% - 60px);
+    background: #299B63;
+    overflow-x: hidden;
+}
+
+.sidebar ul{
+    margin-top: 20px;
+}
+
+.sidebar ul li{
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar ul li:hover{
+    background: #fff;
+}
+
+.sidebar ul li:hover a{
+    color: #299B63;
+}
+
+.sidebar ul li a{
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.sidebar ul li a i{
+    min-width: 60px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.main{
+    position: absolute;
+    top: 60px;
+    width: calc(100% - 260px);
+    left: 260px;
+    min-height: calc(100vh - 60px);
+    background: #f5f5f5;
+}
+
+.main{
+    position: absolute;
+    top: 60px;
+    width: calc(100% - 260px);
+    left: 260px;
+    min-height: calc(100vh - 60px);
+    background: #f5f5f5;
+}
+
+.contain {
+    top: 10px;
+    left: 25%;
+    background: rgba(255, 255, 255, 0.33);
+	border-radius: 10px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 600px;
+	max-width: 100%;
+	min-height: 300px;
+    padding: 20px 30px;
+   
+}
+
+input {
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 15px;
+	border: 3px solid #f0f0f0;
+	border-radius: 20px;
+	display: block;
+	font-family: inherit;
+	background-color: #eee;
+	padding: 12px 15px;
+	margin: 3px 0;
+	width: 50%;
+    letter-spacing: 1px;
+    
+}
+
+.inner-box{
+    position: relative;
+    left: 0;
+    width: 100%;
+}
+
+.inner-box label{
+    position: relative;
+    left: 55px;
+}
+
+.username-box{
+    letter-spacing: 1px;
+    position: relative;
+    left: 130px;
+    margin-bottom: 25px;
+
+}
+
+.username-box small{
+    visibility: hidden;
+}
+
+.password-box{
+    letter-spacing: 1px;
+    position: relative;
+    left: 130px;
+
+}
+
+
+.password-box small{
+    visibility: hidden;
+}
+
+
+button {
+    position: relative;
+    left: 155px;
+	border-radius: 20px;
+	border: 2px solid #299B63;
+	background-color: #299B63;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+	cursor: pointer;
+	margin: 20px 0;
+}
+
+input:focus{
+    transform: scale(1.03);
+    outline: none;
+}
+
+button:hover{
+    transform: scale(1.01);
+    background-color: #39ac75;
+    
+}
+
+input:focus{
+    background-color: rgba(229, 229, 229, 0.54);
+}
+
+.form_control.success input{
+	border-color: #2ecc71;
+}
+
+.form_control.error input{
+	border-color: #ff4b37d7;	
+}
+
+.form_control.warning input{
+	border-color: #ff8737d7;	
+}
+
+.form_control.success i.fa-check-circle{
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.form_control.warning i.fa-triangle-exclamation{
+    color: #ff8737d7;
+	visibility: visible;
+}
+
+
+
+.form_control.error i.fa-exclamation-circle{
+	color: #ff4b37d7;
+	visibility: visible;
+}
+
+.form_control i{
+    visibility: hidden;
+}
+
+
+.form_control.error small{
+    position: relative;
+    left: 50px;
+	visibility: visible;
+	color: #ff4b37d7;
+
+}
+
+.form_control.warning small{
+    position: relative;
+    left: 50px;
+	visibility: visible;
+	color: #ff8737d7;
+
+}
+
+.form_control.error i{
+    position: absolute;
+    top: 35px;
+    left: 240px;
+}
+
+
+.form_control.warning i{
+    position: absolute;
+    top: 35px;
+    left: 240px;
+}
+
+.form_control.success i{
+    position: absolute;
+    top: 35px;
+    left: 240px;
+}

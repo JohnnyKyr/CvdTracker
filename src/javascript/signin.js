@@ -26,7 +26,7 @@ si_form.si_submit.addEventListener('click', (event) =>{
             si_handleErrors(responseObject);
         }
     };
-
+    
     const requestData = `si_username=${si_form.si_username.value}&si_password=${si_form.si_password.value}`;
     
     request.open('post', '../php/signin.php');
@@ -35,26 +35,39 @@ si_form.si_submit.addEventListener('click', (event) =>{
 });
 
 function si_handleErrors(responseObject) {
-    if (responseObject.ok){
-        location.href = '../html/map.html';
-    }else{
-        if(responseObject.messages[0] === 0){
-            console.log(responseObject);
-            setErrorFor(si_form.si_username, 'Username cannot be blank');
-        }
-
-        if(responseObject.messages[1] === 0){
-            setErrorFor(si_form.si_password, 'Password cannot be blank');
-        }
     
-        if(responseObject.messages[2] === 0){
-            setErrorFor(si_form.si_password, 'Not a matching combination');
-            setErrorFor(si_form.si_username, '');
-            
-        }
-    
-    
+    if(responseObject.messages[0] === 0){
+        console.log(responseObject);
+        setErrorFor(si_form.si_username, 'Username cannot be blank');
     }
+
+    if(responseObject.messages[1] === 0){
+        setErrorFor(si_form.si_password, 'Password cannot be blank');
+    }
+
+    if(responseObject.messages[3] == 0){
+        setErrorFor(si_form.si_password, 'Not a matching combination');
+        setErrorFor(si_form.si_username, 'Not a matching combination');
+    }
+
+    if(responseObject.messages[2] === 0){
+        setErrorFor(si_form.si_password, 'Not a matching combination');
+        setErrorFor(si_form.si_username, 'Not a matching combination');
+        
+    }
+    
+    if(responseObject.ok && responseObject.messages[4] === 0){
+        console.log(responseObject.messages[4]);
+        location.href = '../html/user.php';
+        console.log("user");
+    }else if(responseObject.ok && responseObject.messages[4] === 1){
+        console.log(responseObject.messages[4]);
+        location.href = '../html/adminDashboard.php';
+        console.log("admin");
+    }
+    
+    
+    
 }
 
 
