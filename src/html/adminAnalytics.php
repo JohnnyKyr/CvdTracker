@@ -126,7 +126,7 @@ $_SESSION["visits"] = $visits;
                         <div class="card-name">Total Users</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fa-solid fa-database"></i>
+                        <i class="fa-solid fa-users"></i>
                     </div>
                 </div>
                 
@@ -143,10 +143,10 @@ $_SESSION["visits"] = $visits;
                 <div class="card">
                     <div class="card-content">
                         <div class="number"><?php echo $_SESSION["visits"];?></div>
-                        <div class="card-name">Views by CC</div>
+                        <div class="card-name">Visits of CC</div>
                     </div>
                     <div class="icon-box">
-                        <i class="fa-solid fa-arrows-to-eye"></i>
+                        <i class="fa-solid fa-shop"></i>
                     </div>
                 </div>
             </div>

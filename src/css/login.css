@@ -47,8 +47,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #4d4df070;
-	background-color: #2525eadf;
+	border: 1px solid #208f59ce;
+	background-color: #299B63;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -76,8 +76,8 @@ button:focus {
 }
 
 button.ghost {
-	background-color: #4d4df070;
-	border-color: #4d4df039;
+	background-color: #299b648e;
+	border-color: #299b6484;
 }
 
 form {
@@ -174,8 +174,8 @@ input {
 
 .overlay {
 	
-	background: -webkit-linear-gradient(to right, #fbfbfb, #419dff7c);
-	background: linear-gradient(to right, #fbfbfb, #419dff7c);
+	/* background: -webkit-linear-gradient(to right, #fbfbfb, #299B63); */
+	background: linear-gradient(to right, #fbfbfb, #299b64a9);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -235,11 +235,11 @@ input {
 }
 
 .ghost:hover{
-	background-color: #101062df;
+	background-color: #299B63;
 }
 
 .button:active {
-    box-shadow: 2px 2px 5px #101062df;
+    box-shadow: 2px 2px 5px #299B63;
 }
 
 .form_control i{
