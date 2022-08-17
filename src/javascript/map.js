@@ -279,7 +279,7 @@ function visitReg(responseObject,event){
 
         popup
             .setLatLng(event.latlng)
-            .setContent( responseObject.name +"  "+ responseObject.rating+" " +"<i class='fa-solid fa-star'></i> " + "<br>"+ responseObject.address+"<br>"  +"Expected traffic (<b>2h ahead</b>): "+ "<strong>" +Math.round(popestimation/3)+"</strong>"+"<br>"+"# of visits (<b>past 2h</b>): "+ "<strong>" + Math.round(responseObject.numofp)+ "</strong>" + "<br>"+ "<input type='number' id = 'number' min='0' > <button onclick = 'submitVisit()'>Visit Register</button> ")
+            .setContent( responseObject.name +"  "+ responseObject.rating+" " +"<i class='fa-solid fa-star'></i> " + "<br>"+ responseObject.address+"<br>"  +"Expected traffic (<b>2h ahead</b>): "+ "<strong>" +Math.round(popestimation/3)+"</strong>"+"<br>"+"# of visits (<b>past 2h</b>): "+ "<strong>" + Math.round(responseObject.numofp)+ "</strong>" + "<br>"+ "<input type='number' id = 'number' min='0' > <button onclick = 'submitVisit()'>Register Visit</button> ")
             .openOn(map);
         
    

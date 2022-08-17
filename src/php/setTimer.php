@@ -11,7 +11,7 @@ $select = mysqli_query($connect,$sql);
 if(mysqli_num_rows($select) ){
     $row = mysqli_fetch_assoc($select);
     $day = $row['covid'];
-    $day = date('Y-m-d', strtotime('+14 days', strtotime($day)));
+    $day = date('Y-m-d', strtotime('+7 days', strtotime($day)));
 
 }
 

@@ -29,6 +29,7 @@ request.send(requestData);
 
 
 function setTimer(responseObject){
+    document.getElementById("qText").style.display = "block";
     var countDownDate = new Date(responseObject.day).getTime();
     var x = setInterval(function() {
     var now = new Date().getTime();

@@ -235,6 +235,7 @@ transition: 0.3s;
     left: 135px;
     margin-bottom: 10px;
     letter-spacing: 2px;
+    display: none;
 }
 
 #freedom{
