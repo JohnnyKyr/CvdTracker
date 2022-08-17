@@ -39,7 +39,7 @@
 
 
     function getNumOfP($connect,$id){
-        $select = mysqli_query($connect,"SELECT numofp FROM place WHERE poiID = '$id'");
+        $select = mysqli_query($connect,"SELECT ROUND(AVG(numofp),1) AS numofp FROM place WHERE poiID = '$id'");
             if(mysqli_num_rows($select)){
                 $row = mysqli_fetch_assoc($select);
                 $GLOBALS['numofp'] = $row["numofp"];

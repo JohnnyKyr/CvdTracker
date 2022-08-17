@@ -244,18 +244,19 @@ markerLayer.addEventListener("click",(event)=>{
     
 });
 
+
+
 function dispData(responseObject,event){
-    //Display marker's data that are further than 20m
-    console.log(responseObject.data);
-    console.log(responseObject.numofp);
+   
+    date.setHours(date.getHours()+1);
+    hour1=date.getHours();
+    date.setHours(date.getHours()+2);
+    hour2=date.getHours();
+   
     popularity = responseObject.data.match(/\d+/g);
 
-    if (date.getHours()===22)
-    popestimation = parseInt( popularity[date.getHours()+1])+ parseInt(popularity[0]);
-    if (date.getHours()===23)
-        popestimation = parseInt( popularity[0])+ parseInt(1);
-    else
-        popestimation = parseInt( popularity[date.getHours()+1])+ parseInt(popularity[date.getHours()+2]);
+   
+    popestimation = parseInt( popularity[hour1])+ parseInt(popularity[hour2]);
 
     popup
         .setLatLng(event.latlng)
@@ -264,18 +265,17 @@ function dispData(responseObject,event){
         
 }
 
-function visitReg(responseObject,event){
-    //Display marker's data that are closer than 20m
-    //Added number box and button, in order to register the visit in a certain place
+function visitReg(responseObject,event){    
     poiname = responseObject.id;
+    date.setHours(date.getHours()+1);
+    hour1=date.getHours();
+    date.setHours(date.getHours()+2);
+    hour2=date.getHours();
+   
     popularity = responseObject.data.match(/\d+/g);
-           
-        if (date.getHours()===22)
-            popestimation = parseInt( popularity[date.getHours()+1])+ parseInt(popularity[0]);
-        if (date.getHours()===23)
-            popestimation = parseInt( popularity[0])+ parseInt(1);
-        else
-            popestimation = parseInt( popularity[date.getHours()+1])+ parseInt(popularity[date.getHours()+2]);
+
+   
+    popestimation = parseInt( popularity[hour1])+ parseInt(popularity[hour2]);
 
         popup
             .setLatLng(event.latlng)
