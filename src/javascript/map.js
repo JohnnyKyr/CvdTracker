@@ -260,7 +260,7 @@ function dispData(responseObject,event){
 
     popup
         .setLatLng(event.latlng)
-        .setContent( responseObject.name +"  "+ responseObject.rating + "<br>"+ responseObject.address+"<br>" +"Expected traffic (2h ahead): "+ Math.round(popestimation/3)+"<br>"+"People visited this place(Past 2 h):"+ responseObject.numofp +"<br>")
+        .setContent(responseObject.name +"  "+ responseObject.rating +" " + "<i class='fa-solid fa-star'></i> " + "<br>"+ responseObject.address+"<br>" +"Expected traffic (<b>2h ahead</b>): "+ "<strong>" + Math.round(popestimation/3)+ "</strong>" + "<br>"+"#  of visits (<b>past 2h</b>): "+ "<strong>" +responseObject.numofp + "</strong>"+"<br>")
         .openOn(map);
         
 }
@@ -279,7 +279,7 @@ function visitReg(responseObject,event){
 
         popup
             .setLatLng(event.latlng)
-            .setContent( responseObject.name +"  "+ responseObject.rating + "<br>"+ responseObject.address+"<br>"  +"Expected traffic (2h ahead): "+ Math.round(popestimation/3)+"<br>"+"People visited this place(Past 2 h):"+ responseObject.numofp + "<br>"+ "<input type='number' id = 'number' min='0' > <button onclick = 'submitVisit()'>Visit Register</button> ")
+            .setContent( responseObject.name +"  "+ responseObject.rating+" " +"<i class='fa-solid fa-star'></i> " + "<br>"+ responseObject.address+"<br>"  +"Expected traffic (<b>2h ahead</b>): "+ "<strong>" +Math.round(popestimation/3)+"</strong>"+"<br>"+"# of visits (<b>past 2h</b>): "+ "<strong>" + Math.round(responseObject.numofp)+ "</strong>" + "<br>"+ "<input type='number' id = 'number' min='0' > <button onclick = 'submitVisit()'>Visit Register</button> ")
             .openOn(map);
         
    
@@ -289,6 +289,7 @@ function visitReg(responseObject,event){
 function submitVisit(){
     //Sends the visit data {num of people(optional)} via XMLHTTP request to the server
     var num = document.getElementById("number");
+    map.closePopup();
     console.log(num.value);
     const request = new XMLHttpRequest(); 
 

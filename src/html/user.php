@@ -34,6 +34,7 @@ $select = mysqli_query($connect, $sql);
     <style>#map { height: 500px; box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.5); margin: 10px 100px; }</style>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/map.css">
 </head>
 <body>
     <div class="container">
@@ -101,7 +102,7 @@ $select = mysqli_query($connect, $sql);
         </div>
 
         <div class="main">
-            <div id="map"></div>
+            <div class="custom-popup" id="map"></div>
                 
                 <div class = "button-container">
                     <ul class ="lista">

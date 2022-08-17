@@ -221,3 +221,22 @@ line-height: 20px;
 cursor: pointer;
 transition: 0.3s;
 }
+
+.qInfo{
+    position: absolute;
+    width: 600px;
+    top: 410px;
+    left: 333px;
+    font-size: 30px;
+}
+
+#qText{
+    position: relative;
+    left: 135px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+#freedom{
+    letter-spacing: 2px;
+}

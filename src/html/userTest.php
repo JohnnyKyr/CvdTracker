@@ -106,12 +106,16 @@ session_start();
             <p>
             <button id="submit" onclick="showMessage()">Submit</button>
             </p>
-
             
              
             </div>
             </div>
             </form>
+
+            <div class="qInfo">
+                <p id= "qText">Quarantine ends in</p>
+                <p id="freedom"></p>
+            </div>
         </div>
         
     </div>
@@ -126,6 +130,7 @@ session_start();
     }
 </script>
 <script src="../javascript/userTest.js"></script>
+<script src="../javascript/setTimer.js"></script>
 </body>
 
 </html>
