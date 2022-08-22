@@ -27,7 +27,7 @@ const request = new XMLHttpRequest();
     
     function responseHandle(responseObject){
         var table = document.getElementById("table");
-        for (let i = 0; i < responseObject.name.length -1; i++) {
+        for (let i = 0; i < responseObject.name.length ; i++) {
         pname[i] = responseObject.name[i];
         pdate[i] = responseObject.date[i];
         // console.log(username[i]);

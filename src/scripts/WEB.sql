@@ -94,7 +94,7 @@
         CREATE PROCEDURE Conn(username VARCHAR(255))
         BEGIN 
             
-            DECLARE finishedflag INT;
+            DECLARE done INT DEFAULT FALSE;
             DECLARE placename varchar(255);
             DECLARE name varchar(255);
             DECLARE nname varchar(255);
@@ -102,7 +102,7 @@
  
             DECLARE cursorU CURSOR FOR
 		SELECT place.poiID, MAX(place.tmstmp), poi.name FROM place INNER JOIN poi ON place.userID =username AND poi.id = place.poiID AND DATEDIFF(CURDATE(), place.tmstmp) <= 7 GROUP BY poi.id;     
-            DECLARE CONTINUE HANDLER FOR NOT FOUND SET finishedflag=1;
+            DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=TRUE;
             
             DROP TABLE IF EXISTS cvhs;
             
@@ -112,10 +112,12 @@
             );
 
             OPEN cursorU;
-            SET finishedflag=0;
-            
-            WHILE(finishedflag=0)DO
-            FETCH cursorU INTO placename,placedate,nname ;
+            uLoop:
+            LOOP
+				FETCH cursorU INTO placename,placedate,nname;
+				IF done THEN LEAVE uLoop;
+				END IF;
+
             	SET @name = NULL;
                 SET @name = (SELECT  place.poiID from place,hascovid WHERE hasCovid.id = place.userID AND place.poiID = placename AND hascovid.id !=username AND hour(place.tmstmp)>=hour(placedate - INTERVAL 2 HOUR) AND hour(place.tmstmp)<=hour(placedate + INTERVAL 2 HOUR) AND DAY(place.tmstmp)=DAY(placedate) OR DATEDIFF(placedate, hascovid.covid) >= 7 ORDER BY (place.tmstmp) DESC LIMIT 1) ;
                 
@@ -123,10 +125,9 @@
                 IF @name IS NOT NULL
                 THEN
                 INSERT INTO cvhs(name,tempdate) VALUES(nname,placedate);
-            END IF;
-            SET @name = NULL;
-            END WHILE;
-            
+				END IF;
+			END LOOP uLoop;
+          
             SELECT * FROM cvhs;
         END $$
         DELIMITER ;
