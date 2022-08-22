@@ -99,9 +99,9 @@
             DECLARE name varchar(255);
             DECLARE nname varchar(255);
             DECLARE placedate DATETIME;
-            
+ 
             DECLARE cursorU CURSOR FOR
-            SELECT place.poiID, place.tmstmp,poi.name FROM poi,place WHERE place.userID = username AND poi.id = place.poiID AND DATEDIFF(CURDATE(), place.tmstmp) <= 7;
+		SELECT place.poiID, MAX(place.tmstmp), poi.name FROM place INNER JOIN poi ON place.userID =username AND poi.id = place.poiID AND DATEDIFF(CURDATE(), place.tmstmp) <= 7 GROUP BY poi.id;     
             DECLARE CONTINUE HANDLER FOR NOT FOUND SET finishedflag=1;
             
             DROP TABLE IF EXISTS cvhs;
@@ -117,9 +117,9 @@
             WHILE(finishedflag=0)DO
             FETCH cursorU INTO placename,placedate,nname ;
             	SET @name = NULL;
-                SET @name = (SELECT  place.poiID from place INNER JOIN hasCovid ON hasCovid.id = place.userID AND place.poiID = placename AND hascovid.id !=username  WHERE hour(place.tmstmp)>=hour(placedate - INTERVAL 2 HOUR) AND hour(place.tmstmp)<=hour(placedate + INTERVAL 2 HOUR) AND DAY(place.tmstmp)=DAY(placedate) OR DATEDIFF(placedate, hascovid.covid) >= 7 ORDER BY (place.tmstmp) DESC LIMIT 1) ;
+                SET @name = (SELECT  place.poiID from place,hascovid WHERE hasCovid.id = place.userID AND place.poiID = placename AND hascovid.id !=username AND hour(place.tmstmp)>=hour(placedate - INTERVAL 2 HOUR) AND hour(place.tmstmp)<=hour(placedate + INTERVAL 2 HOUR) AND DAY(place.tmstmp)=DAY(placedate) OR DATEDIFF(placedate, hascovid.covid) >= 7 ORDER BY (place.tmstmp) DESC LIMIT 1) ;
                 
-           
+				
                 IF @name IS NOT NULL
                 THEN
                 INSERT INTO cvhs(name,tempdate) VALUES(nname,placedate);
