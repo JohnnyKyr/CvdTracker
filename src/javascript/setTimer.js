@@ -13,7 +13,8 @@ request.onload = () => {
     if (responseObject){
         if(responseObject.day != ''){
             console.log(responseObject.day);
-            setTimer(responseObject);
+            if(responseObject){
+            setTimer(responseObject);}
         }
         
         

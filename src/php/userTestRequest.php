@@ -18,7 +18,7 @@ if(!mysqli_num_rows($select)){
     
     $GLOBALS['timestamp'] = $row["cast(covid as date)"];
     
-    if($date < date('Y-m-d', strtotime('-14 days', strtotime($timestamp)))){
+    if($date > date('Y-m-d', strtotime('+14 days', strtotime($timestamp)))){
         $status = 0;
         
 
