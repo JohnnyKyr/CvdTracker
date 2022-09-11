@@ -20,15 +20,14 @@ $i=0;
 $day = 31;
 
 
-while($i <$userlength*4*30){
+while(1){
     $k = rand(0,$userlength-1);
     
     $numofp = rand(0,100);
-    $query = "INSERT INTO hasCovid(ID,covid,status) VALUES('$username[$k]',CURRENT_TIMESTAMP - INTERVAL '$day' DAY ,'positive') "; 
-    $select = mysqli_query($connect, $query);
+
+    $select = mysqli_query($connect, "call dateConflict($day,'$username[$k]');");
     
     if($i%$userlength*4==0){
-        
         
             if($day==1){
                 break;

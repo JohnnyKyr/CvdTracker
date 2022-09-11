@@ -137,4 +137,46 @@
 			
 			SELECT * FROM cvhs;
     	END$$
+DELIMITER ;
+	
+
+	 
+	   DROP PROCEDURE if EXISTS dateConflict;
+      DELIMITER $$
+        CREATE PROCEDURE dateConflict(cvdDay INT,username VARCHAR(255))
+			BEGIN 
+				DECLARE cvdDate DATE;
+				DECLARE done INT DEFAULT FALSE;
+                DECLARE accept INT DEFAULT FALSE;
+				DECLARE placedate DATE;
+
+				DECLARE cursorU CURSOR FOR
+				SELECT covid FROM hasCovid WHERE id=username;     
+				DECLARE CONTINUE HANDLER FOR NOT FOUND SET done=TRUE;
+
+				SELECT CURRENT_TIMESTAMP -INTERVAL cvdDay DAY INTO cvdDate;
+                SET accept = True;
+				OPEN cursorU;
+				uLoop:
+				LOOP
+					FETCH cursorU INTO placedate;
+                    
+					IF done THEN LEAVE uLoop;
+					END IF;
+						
+					IF cvdDate <=placedate + INTERVAL 7 DAY AND cvdDate >=placedate - INTERVAL 7 DAY  THEN
+						SET accept = FALSE;
+					END IF;
+					
+				END LOOP uLoop;
+			
+            IF placedate is NULL THEN
+						INSERT INTO hasCovid(ID,covid,status) VALUES(username,cvdDate,'positive'); 
+					END IF;
+                    
+            IF accept is TRUE AND placedate is NOT NULL THEN
+            	INSERT INTO hasCovid(ID,covid,status) VALUES(username,cvdDate,'positive');
+            END IF;
+    	END$$
 	DELIMITER ;
+
