@@ -43,7 +43,7 @@ $hour = 0;
 
 
             $numofp = rand(0,10);
-            $query = "INSERT INTO place(poiID,userID,tmstmp,numofp) VALUES('$poi[$j]','$username[$k]',CURRENT_TIMESTAMP -INTERVAL '$hour' HOUR,'$numofp') "; 
+            $query = "INSERT INTO place(poiID,userID,tmstmp,numofp) VALUES('$poi[$j]','$username[$k]',CURRENT_TIMESTAMP  -INTERVAL '$hour' HOUR,'$numofp') "; 
             $select = mysqli_query($connect, $query);
             
             

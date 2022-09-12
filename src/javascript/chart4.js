@@ -29,7 +29,7 @@ request.send(requestData);
 
 
 function rankedTypes(responseObject){
-  
+  console.log(responseObject);
 
   var temp=0;
   storeTypes = Object.keys(responseObject.types).slice(0,10);
@@ -101,21 +101,21 @@ var typeBar = new Chart(ctx, {
 function covidRankedTypes(responseObject){
   
   var temp=0;
-  covidStoreTypes = Object.keys(responseObject.covidtypes);
-  covidValues = Object.values(responseObject.covidtypes);
-  // tempArr = Object.values(responseObject.covidtype);
+  covidStoreTypes = Object.keys(responseObject.covidtypes).slice(0,10);
+  covidValues = Object.values(responseObject.covidtypes).slice(0,10);
+  tempArr = Object.values(responseObject.covidtypes).slice(10);
 
-  // for(let i =0;i<tempArr.length;i++){
-  //   temp+= tempArr[i];
-  // }
+    for(let i =0;i<tempArr.length;i++){
+     temp+= tempArr[i];
+   }
   
-  // covidValues[10] = temp;
-  // covidStoreTypes[10] = 'Others';
+   covidValues[10] = temp;
+   covidStoreTypes[10] = 'Others';
   
  
   covidTypeBar.data.labels = covidStoreTypes;
   covidTypeBar.data.datasets[0].data = covidValues;
-  console.log(responseObject.covidtypes);
+  
   covidTypeBar.update();
  
 }
