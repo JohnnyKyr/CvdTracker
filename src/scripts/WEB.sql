@@ -123,13 +123,12 @@
 					SELECT  place.poiID,place.tmstmp INTO @name,@tmstmp from place,hascovid WHERE hasCovid.id = place.userID AND place.poiID = placename AND hascovid.id !=username  ORDER BY (place.tmstmp) DESC LIMIT 1;
 					
 					
-				
 					IF @name IS NOT NULL
 						THEN
 						
-						IF @tmstmp>=placedate - INTERVAL 2 HOUR AND @tmstmp <=placedate + INTERVAL 2 HOUR 
+						IF @tmstmp >=placedate - INTERVAL 2 HOUR AND @tmstmp <=placedate + INTERVAL 2 HOUR 
 							THEN
-						
+							
 							INSERT INTO cvhs(name,tempdate) VALUES(nname,placedate);
 						END IF;
 					END IF;

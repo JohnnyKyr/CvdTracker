@@ -36,22 +36,8 @@ function randomPassword() {
 		return $username;
 	}
 
-$firstNameCollection = array("Harry","Ross",
-                        "Bruce","Cook",
-                        "Carolyn","Morgan",
-                        "Albert","Walker",
-                        "Randy","Reed",
-                        "Larry","Barnes",
-                        "Lois","Wilson",
-                        "Jesse","Campbell",
-                        "Ernest","Rogers",
-                        "Theresa","Patterson",
-                        "Henry","Simmons",
-                        "Michelle","Perry",
-                        "Frank","Butler",
-                        "Shirley");
-
-
+$jsondata = file_get_contents("firstname.json");
+$firstNameCollection = json_decode($jsondata,true);
 
 $lastNameCollection = array("Ruth","Jackson",
                     "Debra","Allen",
@@ -70,7 +56,7 @@ $lastNameCollection = array("Ruth","Jackson",
 
 
 $fullNameCollection = array();
-for($i = 0; $i < 20;$i++) {
+for($i = 0; $i < 300;$i++) {
     $newFirstName = $firstNameCollection[rand(0, count($firstNameCollection)-1)];
     $newLastName = $lastNameCollection[rand(0, count($lastNameCollection)-1)];
 

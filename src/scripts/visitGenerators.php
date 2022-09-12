@@ -32,18 +32,18 @@ $poilength = count($poi);
 
 
 $i=0;
-$day = 31;
+$day = 62;
 $hour = 0;
 
         while($i <$poilength*4*30*24){
             $k = rand(0,$userlength-1);
             $j = rand(0,$poilength-1);
             $day = rand(1,31);
-            $hour = rand(0,23);
+            $hour = rand(0,2);
 
 
             $numofp = rand(0,10);
-            $query = "INSERT INTO place(poiID,userID,tmstmp,numofp) VALUES('$poi[$j]','$username[$k]',CURRENT_TIMESTAMP - INTERVAL '$day' DAY +INTERVAL '$hour' HOUR,'$numofp') "; 
+            $query = "INSERT INTO place(poiID,userID,tmstmp,numofp) VALUES('$poi[$j]','$username[$k]',CURRENT_TIMESTAMP -INTERVAL '$hour' HOUR,'$numofp') "; 
             $select = mysqli_query($connect, $query);
             
             

@@ -31,7 +31,7 @@ $select = mysqli_query($connect, $sql);
     <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
     integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
     crossorigin=""></script>
-    <style>#map { height: 850px; box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.5); margin: 10px 100px; }</style>
+    <style>#map { height: 650px; box-shadow: 0 7px 25px 0 rgba(0, 0, 0, 0.5); margin: 10px 100px; }</style>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/user.css">
     <link rel="stylesheet" href="../css/map.css">
