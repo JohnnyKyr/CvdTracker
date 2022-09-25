@@ -134,7 +134,7 @@
 					END IF;
 				END LOOP uLoop;
 			
-			SELECT * FROM cvhs;
+			SELECT * FROM cvhs ORDER BY(tempdate) DESC;
     	END$$
 DELIMITER ;
 	

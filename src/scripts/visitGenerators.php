@@ -39,11 +39,13 @@ $hour = 0;
             $k = rand(0,$userlength-1);
             $j = rand(0,$poilength-1);
             $day = rand(1,31);
-            $hour = rand(0,2);
+            $hour = rand(0,23);
 
 
             $numofp = rand(0,10);
-            $query = "INSERT INTO place(poiID,userID,tmstmp,numofp) VALUES('$poi[$j]','$username[$k]',CURRENT_TIMESTAMP  -INTERVAL '$hour' HOUR,'$numofp') "; 
+            // $query = "INSERT INTO place(poiID,userID,tmstmp,numofp) VALUES('$poi[$j]','$username[$k]',CURRENT_TIMESTAMP  -INTERVAL '$hour' HOUR,'$numofp') "; Create visits only for the current day
+
+            $query = "INSERT INTO place(poiID,userID,tmstmp,numofp) VALUES('$poi[$j]','$username[$k]',CURRENT_TIMESTAMP - INTERVAL '$day' DAY -INTERVAL '$hour' HOUR,'$numofp') "; 
             $select = mysqli_query($connect, $query);
             
             

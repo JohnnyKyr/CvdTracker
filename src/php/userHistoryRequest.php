@@ -4,8 +4,8 @@ $userID = $_SESSION['username'];
 include_once '../php/dbh.php';
  
 
-$sql = " SELECT poi.name, place.tmstmp FROM poi INNER JOIN place ON poi.id = place.poiID AND place.userID = '$userID' ORDER BY place.tmstmp ASC";
-$sqli = "SELECT covid FROM hasCovid WHERE id = '$userID' ORDER BY covid ASC";
+$sql = " SELECT poi.name, place.tmstmp FROM poi INNER JOIN place ON poi.id = place.poiID AND place.userID = '$userID' ORDER BY place.tmstmp DESC";
+$sqli = "SELECT covid FROM hasCovid WHERE id = '$userID' ORDER BY covid DESC";
 
 $place = array();
 $placetmstmp = array();
