@@ -5,7 +5,7 @@ Web development university project 2021-2022
 - [Xaris Kap](https://github.com/xariskap)
 - [Johnny Kyr](https://github.com/JohnnyKyr)
 
-< img src="https://github.com/JohnnyKyr/CVDtrack/blob/main/mockups/adminDashboard.png"  width="60%" height="30%"> 
+<img src="https://github.com/JohnnyKyr/CVDtrack/blob/main/mockups/adminDashboard.png"  width="60%" height="30%"> 
 ![History](https://github.com/JohnnyKyr/CVDtrack/blob/main/mockups/history.png)
 ![List](https://github.com/JohnnyKyr/CVDtrack/blob/main/mockups/list.png)
 ![Map](https://github.com/JohnnyKyr/CVDtrack/blob/main/mockups/map.png)
