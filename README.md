@@ -4,7 +4,8 @@ Web development university project 2021-2022
 ### Authors
 - [Xaris Kap](https://github.com/xariskap)
 - [Johnny Kyr](https://github.com/JohnnyKyr)\
-## The purpose of this application is to track the places someone has visited where a positive to covid individuals has been there
+
+The purpose of this application is to track the places someone has visited where a positive to covid individuals has been there
 
 ## The images below are screenshots for some features of the app developed.
 <p align="center">
